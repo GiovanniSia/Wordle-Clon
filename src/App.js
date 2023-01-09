@@ -1,11 +1,11 @@
 import './App.css';
+import GrillaPrincipal from './componentes/GrillaPrincipal';
 
 function App() {
   return (
     <div className="App">
-      Aca irian los componentes
+      <GrillaPrincipal></GrillaPrincipal>
     </div>
   );
-}
-
+};
 export default App;

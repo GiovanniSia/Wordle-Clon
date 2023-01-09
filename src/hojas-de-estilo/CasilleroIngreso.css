@@ -1,0 +1,22 @@
+.letraIngreso{
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    max-width: 62px;
+    height: 100%;
+    max-height: 62px;
+    background-color: var(--color-present);
+    color: white;
+    border-color: rgb(224, 224, 224);
+    font-size: 1.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 5px;
+    user-select: none;
+    cursor: default;
+    border: 1px solid black;
+    padding:30px;
+}
