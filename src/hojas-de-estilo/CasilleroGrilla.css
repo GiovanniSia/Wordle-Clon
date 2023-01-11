@@ -20,11 +20,15 @@
     font-weight: 700;
     text-transform: uppercase;
     border-radius: 5px;
-    user-select: none;
-    cursor: default;
-    
+    cursor: pointer;
+    background-color: transparent;
     padding:30px;
     color:black;
+}
+
+.letraIngreso:focus{
+    border: 2px solid rgb(144, 202, 249);
+    outline: none;
 }
 
 .correct{

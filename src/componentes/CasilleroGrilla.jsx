@@ -6,12 +6,13 @@ id valor por defecto
 indice: Posicion en el tablero
 valor: Letra escrita
 estado: 'absent','present','correct','error'
+activo: falso,true
 */
-const LetraIngreso = ( {indice,valor, estado} ) => {
+const LetraIngreso = ( {indice,valor, estado,activo} ) => {
     return (
-        <div className={`letraIngreso ${estado}`}>
+        <button className={`letraIngreso ${estado}`} disabled={activo ? false : true}>
             {valor}
-        </div>
+        </button>
     )
 }
 export default LetraIngreso;
