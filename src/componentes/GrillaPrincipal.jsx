@@ -4,8 +4,8 @@ import CasilleroGrilla from "./CasilleroGrilla";
 
 const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
 
-    //Para saber donde escribir, se utilizara este arreglo que nos dice que fila comprobar los estados de cada casillero, en el que quede sin escribir se escribe
   const [filaEnJuego, setFilaEnJuego] = useState(0);
+  const [juegoTerminado, setJuegoTerminado] = useState(false);
   const [palabraEscrita, setPalabraEscrita] = useState("");
   const palabraCorrecta = useRef(pCorrecta);
   const cantLetras = useRef(cantLet);
@@ -46,9 +46,21 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
   },[]);
 
 
-  const actualizarPalabraEscrita = useCallback( (palabra,columna) => {
-    
-  },[]);
+  const actualizarPalabraEscrita = useCallback( (letra,columna) => {
+    setPalabraEscrita(palabraEscrita + letra.toUpperCase());    
+    let palabraAct = palabraEscrita + letra.toUpperCase();
+
+    console.log('palabraEscrita: '+palabraAct+', palabraCorrecta:'+palabraCorrecta.current);
+    if(palabraAct === palabraCorrecta.current){
+      console.log('adivino');
+      setJuegoTerminado(true);
+    }
+    //se escribe en otra fila
+    if(columna === cantLetras.current-1){
+      console.log('se borra palabra escrita')
+      setPalabraEscrita('');
+    }
+  },[palabraEscrita]);
 
 
   const escribirCasillero = useCallback((letra) => {
@@ -57,18 +69,18 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
       if(casillero.estado === 'default'){
         casillero.valor = letra;
         casillero.estado = establecerEstadoCasillero(letra,i);
-        setPalabraEscrita( palabraEscrita + letra);
         
         //Si la letra escrita fue la ultima
         if(i===(cantLetras.current-1)){
 
           setFilaEnJuego(filaEnJuego+1);
-          actualizarPalabraEscrita(casillero.valor,i);
+          
         }
+        actualizarPalabraEscrita(letra,i);
         return;
       }
     }
-  },[establecerEstadoCasillero,actualizarPalabraEscrita,filaEnJuego,casilleros,palabraEscrita]);
+  },[establecerEstadoCasillero,actualizarPalabraEscrita,filaEnJuego,casilleros]);
 
 
   const esLetraValida = (letra) => {
@@ -78,11 +90,11 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
   }
 
   const borrarLetraActual = () => {
-    
+
   }
 
   const procesarTecla = useCallback( (event) => {
-    if(filaEnJuego>=cantIntentos.current){
+    if(filaEnJuego>=cantIntentos.current || juegoTerminado){
       return;
     }
     if(event.key === 'Backspace'){
@@ -91,11 +103,9 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
     }
 
     if(esLetraValida(event.key)){
-      //^[a-zA-Z]+/.test('aaáad')
-      console.log('se escribe: '+event.key);
       escribirCasillero(event.key);
     }
-  },[escribirCasillero,filaEnJuego])
+  },[escribirCasillero,filaEnJuego,juegoTerminado]);
 
   
   useEffect(() => {
