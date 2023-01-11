@@ -68,16 +68,6 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
     }
   };
 
-  const actualizarPalabraEscrita = (letra) => {
-    setPalabraEscrita(palabraEscrita + letra);
-    let palabraAct = palabraEscrita + letra;
-    if (palabraAct === palabraCorrecta.current) {
-      setJuegoTerminado(true);
-      console.log("gano");
-      return;
-    }
-  };
-
   const esPalabraValida = () => {
     return true;
   };
@@ -88,7 +78,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
 
       if (casillero.valor === "" && casillero.activo) {
         casillero.valor = letra;
-        actualizarPalabraEscrita(letra);
+        setPalabraEscrita(palabraEscrita + letra);
         return;
       }
     }
@@ -110,10 +100,17 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
     return casPrev;
   };
 
-  const actualizarFilaEnJuego = () => {
+  const actualizarEstadoJuego = () => {
+    if(palabraEscrita === palabraCorrecta.current){
+      console.log('gano');
+      return;
+    }
     setFilaEnJuego(filaEnJuego + 1);
-    if(filaEnJuego+1<cantIntentos){
+    console.log('fila en juego: '+(filaEnJuego+1)+', cantInt: '+cantIntentos.current);
+    if(filaEnJuego+1<cantIntentos.current){
       casilleros[filaEnJuego+1].forEach( casillero => casillero.activo = true);
+    }else{
+      console.log('perdio');
     }
   }
 
@@ -128,7 +125,6 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
   };
 
   const procesarTecla = (event) => {
-    
     if (filaEnJuego >= cantIntentos.current || juegoTerminado) {
       return;
     }
@@ -140,7 +136,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
     if (event.key === "Enter" && esPalabraValida() && palabraEscrita.length === cantLetras.current) {
       //para que se cambien los estilos
       actualizarCasilleros();
-      actualizarFilaEnJuego();
+      actualizarEstadoJuego();
       setPalabraEscrita('');
     }
 
@@ -151,7 +147,6 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
 
   useWindow("keyup", procesarTecla);
 
-  useEffect(() => {}, []);
 
   return (
     <>
