@@ -14,7 +14,7 @@ const TecladoVirtual = () => {
     if (letra === "backspace") {
       return <img src="https://img.icons8.com/ios-glyphs/30/null/clear-symbol.png" alt="" />;
     } else if (letra === "ENVIAR") {
-      return <img src="https://img.icons8.com/material-outlined/24/null/checkmark--v2.png" />;
+      return <img src="https://img.icons8.com/material-outlined/24/null/checkmark--v2.png" alt="" />;
     } else {
       return letra;
     }

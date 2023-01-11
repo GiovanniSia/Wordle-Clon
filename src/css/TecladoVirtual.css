@@ -5,7 +5,12 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  padding-bottom: 50px;
+  padding-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 50px;
+  margin: 0px auto;
 }
 
 .fila {
@@ -15,10 +20,10 @@
 
 .tecla,
 .tecla-larga {
-  width: 20%;
+  width: 100%;
   height: 60px;
-  margin: 1px;
-  padding: auto;
+  margin: 2px;
+  padding: 20px;
   font-size: 20px;
   font-weight: bold;
   border: none;
@@ -36,11 +41,4 @@
 .tecla-larga {
   width: 25%;
   height: 60px;
-}
-
-@media only screen and (max-width: 1200px) {
-  .tecladoVirtual {
-    width: 80%;
-    height: 40%;
-  }
 }
