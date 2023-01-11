@@ -89,9 +89,29 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
     return letras.includes(letra.toLowerCase());
   }
 
-  const borrarLetraActual = () => {
+  const obtenerCasilleroActual = useCallback(() => {
+    let casPrev;
+    for(let i=0; i< casilleros[filaEnJuego].length; i++){
+      if(casilleros[filaEnJuego][i].valor === ''){
+        return casPrev;
+      }else{
+        casPrev = casilleros[filaEnJuego][i];
+      }
+    }return null;
+  },[casilleros,filaEnJuego]);
 
-  }
+  const borrarLetraActual = useCallback( () => {
+    if(palabraEscrita === ''){
+      console.log('nada que borrar');
+      return;
+    }
+    setPalabraEscrita( palabraEscrita.substring(0, palabraEscrita.length-1));
+    let casilleroAct = obtenerCasilleroActual();
+    casilleroAct.valor = '';
+    casilleroAct.estado = 'default';
+
+
+  },[palabraEscrita,obtenerCasilleroActual]);
 
   const procesarTecla = useCallback( (event) => {
     if(filaEnJuego>=cantIntentos.current || juegoTerminado){
@@ -105,7 +125,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
     if(esLetraValida(event.key)){
       escribirCasillero(event.key);
     }
-  },[escribirCasillero,filaEnJuego,juegoTerminado]);
+  },[escribirCasillero,borrarLetraActual,filaEnJuego,juegoTerminado]);
 
   
   useEffect(() => {
@@ -123,13 +143,10 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
         casilleros.map( (fila) => {
           return fila.map( (casillero) => {
             return <CasilleroGrilla
-            //indice,valor, estado, enJuego
             key={casillero.indice}
             indice={casillero.indice}
             valor={casillero.valor}
             estado={casillero.estado}
-            enJuego={casillero.enJuego}
-            /*escribirCasillero={escribirCasillero}*/
           ></CasilleroGrilla>;
           } )
           
