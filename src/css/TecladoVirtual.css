@@ -1,14 +1,19 @@
 .tecladoVirtual {
-  /* Estilos para tamaño normal de pantalla */
-    position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+  max-width: 520px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 50px;
 }
-.tecla,.tecla-larga {
+
+.fila {
+  display: flex;
+  flex-direction: row;
+}
+
+.tecla,
+.tecla-larga {
   margin: 5px;
   padding: 15px 25px;
   font-size: 20px;
@@ -20,18 +25,17 @@
   cursor: pointer;
 }
 
-.tecla,.tecla-larga:active {
+.tecla,
+.tecla-larga:active {
   background-color: #34495e;
 }
 
-.tecla,.tecla-larga:focus {
+.tecla,
+.tecla-larga:focus {
   outline: none;
 }
 
-.tecla-larga{
-  padding: 15px 45px;
-
-}
+.tecla-larga {}
 
 @media only screen and (max-width: 768px) {
   .tecladoVirtual {
