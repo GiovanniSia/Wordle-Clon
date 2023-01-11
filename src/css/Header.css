@@ -37,11 +37,13 @@ header {
 
 .boton-header:hover {
   background-color: cyan;
-  border-radius: 20px;
-  width: 7vw;
-  height: 10vh;
+  border-radius: 10px;
+
+  outline: 0px;
+  border: 0px;
 }
 
 .img-header {
   width: 21px;
+  padding: 5px;
 }
