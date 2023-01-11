@@ -1,0 +1,47 @@
+header {
+  max-width: 520px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  margin: 0px auto;
+}
+
+.la-palabra {
+  margin: 0px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.167;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+
+}
+
+.del-dia {
+  margin: 0px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.2;
+  color: rgb(117, 117, 117);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+
+}
+
+.boton-header {
+  background-color: #fff;
+  border: 0px;
+}
+
+.boton-header:hover {
+  background-color: cyan;
+  border-radius: 20px;
+  width: 7vw;
+  height: 10vh;
+}
+
+.img-header {
+  width: 21px;
+}

@@ -9,6 +9,17 @@ const TecladoVirtual = () => {
   const presionarTecla = letra => {
     console.log(letra);
   };
+
+  function tipoLetraFila3(letra) {
+    if (letra === "backspace") {
+      return <img src="https://img.icons8.com/ios-glyphs/30/null/clear-symbol.png" alt="" />;
+    } else if (letra === "ENVIAR") {
+      return <img src="https://img.icons8.com/material-outlined/24/null/checkmark--v2.png" />;
+    } else {
+      return letra;
+    }
+  }
+
   return (
     <div className="tecladoVirtual">
 
@@ -32,7 +43,9 @@ const TecladoVirtual = () => {
         {letrasFila3.map(letra => (
 
           <button className={letra.length > 1 ? "tecla-larga" : "tecla"} onClick={() => presionarTecla(letra)}>
-            {letra === "backspace" ? <img src="https://img.icons8.com/ios-glyphs/30/null/clear-symbol.png" /> : letra}
+            {
+              tipoLetraFila3(letra)
+            }
           </button>
         ))}
       </div>
@@ -42,3 +55,4 @@ const TecladoVirtual = () => {
 }
 
 export default TecladoVirtual;
+
