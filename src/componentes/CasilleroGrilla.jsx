@@ -5,11 +5,11 @@ import '../hojas-de-estilo/CasilleroGrilla.css'
 id valor por defecto
 indice: Posicion en el tablero
 valor: Letra escrita
-estado: correcto, incorrecto, c-i, default
+estado: 'absent','present','correct','error'
 */
 const LetraIngreso = ( {indice,valor, estado} ) => {
     return (
-        <div className="letraIngreso">
+        <div className={`letraIngreso ${estado}`}>
             {valor}
         </div>
     )

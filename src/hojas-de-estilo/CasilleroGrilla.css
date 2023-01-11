@@ -1,3 +1,10 @@
+:root {
+    --color-absent: #757575;
+    --color-present: #e4a81d;
+    --color-correct: #43a047;
+    --color-error: #bb3429;
+}
+
 .letraIngreso{
     display: flex;
     -webkit-box-pack: center;
@@ -8,15 +15,27 @@
     max-width: 62px;
     height: 100%;
     max-height: 62px;
-    background-color: var(--color-present);
-    color: black;
-    border-color: rgb(224, 224, 224);
+    border: 2px solid rgb(224, 224, 224);
     font-size: 1.875rem;
     font-weight: 700;
     text-transform: uppercase;
     border-radius: 5px;
     user-select: none;
     cursor: default;
-    border: 1px solid black;
+    
     padding:30px;
+    color:black;
+}
+
+.correct{
+    background-color: var(--color-correct);
+    color: white;
+}
+.absent{
+    background-color: var(--color-absent);
+    color: white;
+}
+.present{
+    background-color: var(--color-present);
+    color: white;
 }
