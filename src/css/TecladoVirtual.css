@@ -1,9 +1,5 @@
-* {
-  border: 2px solid black;
-}
-
 .tecladoVirtual {
-  width: 80%;
+  width: 50%;
   height: auto;
 
   /*
@@ -62,7 +58,7 @@
   display: none;
 }
 
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 726px) {
   .tecladoVirtual {
     width: 100%;
     height: auto;
@@ -86,7 +82,7 @@
   }
 
   .Enviar2 {
-    display: flex;
+      display: flex;
 
   }
 
