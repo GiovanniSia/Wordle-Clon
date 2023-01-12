@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import "../hojas-de-estilo/GrillaPrincipal.css";
 import CasilleroGrilla from "./CasilleroGrilla";
 import { useWindow } from "../hooks/useWindow";
@@ -102,7 +102,8 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
 
   const actualizarEstadoJuego = () => {
     if(palabraEscrita === palabraCorrecta.current){
-      console.log('gano');
+      setJuegoTerminado(true);
+      alert('gano')
       return;
     }
     setFilaEnJuego(filaEnJuego + 1);
@@ -125,6 +126,9 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
   };
 
   const procesarTecla = (event) => {
+    if(juegoTerminado){
+      return;
+    }
     if (filaEnJuego >= cantIntentos.current || juegoTerminado) {
       return;
     }
