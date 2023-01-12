@@ -1,7 +1,11 @@
+* {
+  border: 2px solid black;
+}
+
 .tecladoVirtual {
   width: 80%;
   height: auto;
-  
+
   /*
   position: absolute;
   bottom: 0;
@@ -9,7 +13,7 @@
   transform: translateX(-50%);
   padding-bottom: 200px;
   */
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,8 +22,11 @@
 }
 
 .fila {
+  width: 100%;
   display: flex;
   flex-direction: row;
+
+  flex-shrink: -1;
 }
 
 .tecla,
@@ -27,7 +34,7 @@
   width: 100%;
   height: 60px;
   margin: 2px;
-  padding: 20px;
+  padding: 2%;
   font-size: 20px;
   font-weight: bold;
   border: none;
@@ -47,11 +54,11 @@
   height: 60px;
 }
 
-.Enviar1{
+.Enviar1 {
   display: flex;
 }
 
-.Enviar2{
+.Enviar2 {
   display: none;
 }
 
@@ -66,19 +73,19 @@
     width: 70%;
     height: 60px;
     margin: 2px;
-    padding: 1.2vh;
+    padding: 2%;
     font-size: 20px;
   }
 
-  .fila{
+  .fila {
     width: 100%;
   }
 
-  .Enviar1{
+  .Enviar1 {
     display: none;
   }
-  
-  .Enviar2{
+
+  .Enviar2 {
     display: flex;
 
   }
