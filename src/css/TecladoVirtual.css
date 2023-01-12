@@ -42,7 +42,7 @@
 
 .tecla:hover,
 .tecla-larga:hover {
-  background-color: #34495e;
+  background-color: rgb(158, 162, 168);
 }
 
 .tecla-larga {
