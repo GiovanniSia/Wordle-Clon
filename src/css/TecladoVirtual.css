@@ -1,0 +1,61 @@
+.tecladoVirtual {
+  width: 80%;
+  height: 40%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 50px;
+  margin: 0px auto;
+}
+
+.fila {
+  display: flex;
+  flex-direction: row;
+}
+
+.tecla,
+.tecla-larga {
+  width: 100%;
+  height: 60px;
+  margin: 2px;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  background-color: #e2e8f0;
+  color: black;
+  cursor: pointer;
+}
+
+.tecla:hover,
+.tecla-larga:hover {
+  background-color: #34495e;
+}
+
+.tecla-larga {
+  width: 25%;
+  height: 60px;
+}
+
+@media only screen and (max-width: 520px) {
+  .tecladoVirtual {
+    width: 100%;
+    height: 10%;
+  }
+
+  .tecla,
+  .tecla-larga {
+    width: 70%;
+    height: 70px;
+    margin: 2px;
+    padding: 1.2vh;
+    font-size: 20px;
+  }
+
+}

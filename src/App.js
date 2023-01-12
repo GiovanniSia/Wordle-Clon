@@ -1,5 +1,6 @@
 import './App.css';
-import GrillaPrincipal from './componentes/GrillaPrincipal';
+import GrillaPrincipal from './components/GrillaPrincipal';
+import "./App.css";
 
 function App() {
   return (
