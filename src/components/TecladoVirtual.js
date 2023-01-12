@@ -5,7 +5,7 @@ const letrasFila1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
 const letrasFila2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ñ'];
 const letrasFila3 = ['ENVIAR', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', "backspace"];
 
-const TecladoVirtual = () => {
+const TecladoVirtual = ({onClick}) => {
   const presionarTecla = letra => {
     console.log(letra);
   };

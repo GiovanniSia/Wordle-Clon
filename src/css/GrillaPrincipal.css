@@ -1,3 +1,8 @@
+.contenedor-principal{
+    display: flex;
+    flex-direction: column;
+}
+
 .grilla-principal-contenedor{
 
     width: 100%;
@@ -10,5 +15,5 @@
     grid-template-rows: repeat(6,1fr);
     gap: 5px;
     padding: 1px;
-    margin: 5% auto;
+    margin: 0 auto;
 }

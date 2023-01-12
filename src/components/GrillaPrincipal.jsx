@@ -1,7 +1,10 @@
 import { useState, useRef } from "react";
-import "../hojas-de-estilo/GrillaPrincipal.css";
+import "../css/GrillaPrincipal.css";
 import CasilleroGrilla from "./CasilleroGrilla";
 import { useWindow } from "../hooks/useWindow";
+
+import Header from './Header';
+import TecladoVirtual from './TecladoVirtual';
 
 const letras = ['a','b','c','d','e','f','g','h','i','j','k','l', 'ñ','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
@@ -153,8 +156,10 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
 
 
   return (
-    <>
+    <div className="contenedor-principal">
+    <Header />
       <div className="grilla-principal-contenedor">
+      
         {casilleros.map((fila) => {
           return fila.map((casillero) => {
             return (
@@ -167,9 +172,10 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
               ></CasilleroGrilla>
             );
           });
-        })}
+        })}      
       </div>
-    </>
+      <TecladoVirtual onClick={procesarTecla}></TecladoVirtual>
+    </div>
   );
 };
 export default GrillaPrincipal;

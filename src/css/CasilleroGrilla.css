@@ -24,6 +24,7 @@
     background-color: transparent;
     padding:30px;
     color:black;
+    transition: all 0.2s;
 }
 
 .letraIngreso:focus{
@@ -43,3 +44,4 @@
     background-color: var(--color-present);
     color: white;
 }
+

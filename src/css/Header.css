@@ -1,5 +1,6 @@
 header {
   max-width: 520px;
+  width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,6 +16,7 @@ header {
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
+  color: black;
 
 }
 
@@ -44,6 +46,6 @@ header {
 }
 
 .img-header {
-  width: 21px;
+  width: 35px;
   padding: 5px;
 }

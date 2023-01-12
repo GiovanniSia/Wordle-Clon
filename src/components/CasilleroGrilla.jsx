@@ -1,5 +1,5 @@
 import React from "react";
-import '../hojas-de-estilo/CasilleroGrilla.css'
+import '../css/CasilleroGrilla.css'
 
 /*
 id valor por defecto
