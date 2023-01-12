@@ -129,26 +129,32 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
   };
 
   const procesarTecla = (event) => {
+    console.log('se procesa tecla')
+    let letra = event;
+    if(typeof event !== 'string'){
+      letra = event.key;
+    }
+
     if(juegoTerminado){
       return;
     }
     if (filaEnJuego >= cantIntentos.current || juegoTerminado) {
       return;
     }
-    if (event.key === "Backspace") {
+    if (letra === "Backspace") {
       borrarLetraActual();
       return;
     }
 
-    if (event.key === "Enter" && esPalabraValida() && palabraEscrita.length === cantLetras.current) {
+    if (letra === "Enter" && esPalabraValida() && palabraEscrita.length === cantLetras.current) {
       //para que se cambien los estilos
       actualizarCasilleros();
       actualizarEstadoJuego();
       setPalabraEscrita('');
     }
 
-    if (esLetraValida(event.key) && palabraEscrita.length <= cantLetras.current) {
-      escribirCasillero(event.key.toUpperCase());
+    if (esLetraValida(letra) && palabraEscrita.length <= cantLetras.current) {
+      escribirCasillero(letra.toUpperCase());
     }
   };
 
@@ -174,7 +180,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
           });
         })}      
       </div>
-      <TecladoVirtual onClick={procesarTecla}></TecladoVirtual>
+      <TecladoVirtual onKeyPressed={procesarTecla}></TecladoVirtual>
     </div>
   );
 };
