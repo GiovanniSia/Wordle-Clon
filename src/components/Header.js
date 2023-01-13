@@ -2,24 +2,40 @@ import React, { useState } from 'react';
 import "../css/Header.css"
 import BotonHeader from "./BotonHeader";
 import "../css/MenuDesplegable.css";
+import ItemMenu from './ItemMenu';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <header>
       <div>
-
         <BotonHeader onClick={() => setIsOpen(!isOpen)} key={1} src="https://img.icons8.com/ios/50/null/menu-squared-2.png" />
         {isOpen && (
           <div className="MenuDesplegable">
             {
               <div className='lista'>
-                <p> Holaaaaaa</p>
-                <p> Holaaaa</p>
-                <p> Holaaa</p>
+                <ItemMenu msg="Normal" />
+                <ItemMenu msg="Tildes" />
+                <ItemMenu msg="Científica" />
+                <ItemMenu msg="Contrarreloj" />
+
+                <hr className='linea-menu-desplegable' />
+
+                <ItemMenu msg="Crear" />
+
+                <hr className='linea-menu-desplegable' />
+
+                <ItemMenu msg="Archivo" />
+
+                <hr className='linea-menu-desplegable' />
+
+                <ItemMenu msg="Cómo jugar" />
+                <ItemMenu msg="Blog" />
+                <ItemMenu msg="Acerca del juego" />
+                <ItemMenu msg="Contacto" />
+
               </div>
             }
-
           </div>
         )}
 
