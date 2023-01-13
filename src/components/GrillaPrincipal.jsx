@@ -83,6 +83,12 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
       console.log('la palabra no existe')
     }
 
+    if (letra === "Enter"){
+      console.log('es palabravalida: '+esPalabraValida(palabraEscrita));
+      console.log('palabraEscrita: '+palabraEscrita+', palabraCorrecta: '+palabraCorrecta.current);
+    }
+    
+
     if (letra === "Enter" && esPalabraValida(palabraEscrita) && palabraEscrita.length === cantLetras.current) {
       //para que se cambien los estilos
 
@@ -93,7 +99,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
       return;
     }
 
-    if (esLetraValida(letra) && palabraEscrita.length <= cantLetras.current) {
+    if (esLetraValida(letra) && palabraEscrita.length < cantLetras.current) {
       escribirCasillero(letra.toUpperCase());
     }
   };
@@ -119,7 +125,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
           });
         })}      
       </div>
-      <TecladoVirtual onKeyPressed={procesarTecla}></TecladoVirtual>
+      <TecladoVirtual onKeyPressed={procesarTecla} casillerosGrilla={casilleros}></TecladoVirtual>
     </div>
   );
 };

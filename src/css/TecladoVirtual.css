@@ -1,15 +1,13 @@
+:root {
+  --color-absent: #757575;
+  --color-present: #e4a81d;
+  --color-correct: #43a047;
+  --color-error: #bb3429;
+}
+
 .tecladoVirtual {
   width: 50%;
   height: auto;
-
-  /*
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  padding-bottom: 200px;
-  */
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,6 +55,21 @@
 .Enviar2 {
   display: none;
 }
+
+
+.correct{
+  background-color: var(--color-correct);
+  color: white;
+}
+.absent{
+  background-color: var(--color-absent);
+  color: white;
+}
+.present{
+  background-color: var(--color-present);
+  color: white;
+}
+
 
 @media only screen and (max-width: 726px) {
   .tecladoVirtual {
