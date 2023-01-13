@@ -2,11 +2,15 @@ import { useState, useRef } from "react";
 import "../css/GrillaPrincipal.css";
 import CasilleroGrilla from "./CasilleroGrilla";
 import { useWindow } from "../hooks/useWindow";
+import {esPalabraValida} from '../service/GeneradorDePalabra';
+
 
 import Header from './Header';
 import TecladoVirtual from './TecladoVirtual';
 
 const letras = ['a','b','c','d','e','f','g','h','i','j','k','l', 'ñ','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+
 
 const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
   //Convertir a componente
@@ -71,10 +75,6 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
     }
   };
 
-  const esPalabraValida = () => {
-    return true;
-  };
-
   const escribirCasillero = (letra) => {
     for (let i = 0; i < casilleros[filaEnJuego].length; i++) {
       let casillero = casilleros[filaEnJuego][i];
@@ -110,7 +110,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
       return;
     }
     setFilaEnJuego(filaEnJuego + 1);
-    console.log('fila en juego: '+(filaEnJuego+1)+', cantInt: '+cantIntentos.current);
+    //se actualiza fila siguiente
     if(filaEnJuego+1<cantIntentos.current){
       casilleros[filaEnJuego+1].forEach( casillero => casillero.activo = true);
     }else{
@@ -129,7 +129,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
   };
 
   const procesarTecla = (event) => {
-    console.log('se procesa tecla')
+    console.log('palabra correcta: '+palabraCorrecta.current)
     let letra = event;
     if(typeof event !== 'string'){
       letra = event.key;
@@ -146,12 +146,19 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
       return;
     }
 
-    if (letra === "Enter" && esPalabraValida() && palabraEscrita.length === cantLetras.current) {
+    if(!esPalabraValida(palabraEscrita) && letra === "Enter"){
+      console.log('la palabra no existe')
+    }
+
+    if (letra === "Enter" && esPalabraValida(palabraEscrita) && palabraEscrita.length === cantLetras.current) {
       //para que se cambien los estilos
       actualizarCasilleros();
       actualizarEstadoJuego();
       setPalabraEscrita('');
+      return;
     }
+
+
 
     if (esLetraValida(letra) && palabraEscrita.length <= cantLetras.current) {
       escribirCasillero(letra.toUpperCase());
