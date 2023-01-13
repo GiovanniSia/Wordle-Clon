@@ -1,9 +1,9 @@
 import React from "react";
 
-const BotonHeader = (prop) => {
+const BotonHeader = (props) => {
   return (
     <>
-      <button className="boton-header"><img className="img-header" src={prop.src} alt="" /></button>
+      <button onClick={props.onClick} className="boton-header"><img className="img-header" src={props.src} alt="" /></button>
     </>
   );
 };
