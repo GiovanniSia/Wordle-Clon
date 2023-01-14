@@ -38,13 +38,14 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
   };
 
   const actualizarEstadoJuego = () => {
+
     if(palabraEscrita === palabraCorrecta.current){
       setJuegoTerminado(true);
 
-      setMsjEmergente({mensaje:'GANO',mostrarMsj:true});
-      setTimeout(()=>{
-        setMsjEmergente({mensaje:'GANO',mostrarMsj:false});
-      },2000);
+      setMsjEmergente({mensaje:'¡ACERTASTE!',mostrarMsj:true});
+    //  setTimeout(()=>{
+     //   setMsjEmergente({mensaje:'GANO',mostrarMsj:false});
+     // },2000);
       
       return;
     }
@@ -55,10 +56,10 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
     if(filaEnJuego+1<cantIntentos.current){
       casilleros[filaEnJuego+1].forEach( casillero => casillero.activo = true);
     }else{
-      setMsjEmergente({mensaje:'PERDIO',mostrarMsj:true});
-      setTimeout(()=>{
-        setMsjEmergente({mensaje:'PERDIO',mostrarMsj:false});
-      },2000);
+      setMsjEmergente({mensaje:'PERDISTE',mostrarMsj:true});
+      //setTimeout(()=>{
+        //setMsjEmergente({mensaje:'PERDIO',mostrarMsj:false});
+      //},2000);
     }
   }
 
@@ -91,20 +92,12 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
     }
 
     if(!esPalabraValida(palabraEscrita) && letra === "Enter"){
-      setMsjEmergente({mensaje:'LA PALABRA NO EXISTE',mostrarMsj:true});
+      setMsjEmergente({mensaje:'La palabra no se encuentra en la lista',mostrarMsj:true});
       setTimeout(()=>{
-        setMsjEmergente({mensaje:'LA PALABRA NO EXISTE',mostrarMsj:false});
+        setMsjEmergente({mensaje:'La palabra no se encuentra en la lista',mostrarMsj:false});
       },1500);
+      return;
     }
-
-    /*
-    if (letra === "Enter"){
-      console.log('es palabravalida: '+esPalabraValida(palabraEscrita));
-      console.log('palabraEscrita: '+palabraEscrita+', palabraCorrecta: '+palabraCorrecta.current);
-    }
-    */
-    
-
     if (letra === "Enter" && esPalabraValida(palabraEscrita) && palabraEscrita.length === cantLetras.current) {
       //para que se cambien los estilos
 

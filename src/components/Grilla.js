@@ -35,7 +35,7 @@ export function actualizarCasilleros(casilleros, filaEnJuego,palabraCorrecta, es
     for (let i = 0; i < casilleros[filaEnJuego].length; i++) {
         let casillero = casilleros[filaEnJuego][i];
 
-        if (palabraCorrecta.charAt(i) === casillero.valor && casillero.valor!=='' && !palabraFormada.includes(casillero.valor)) {
+        if (palabraCorrecta.charAt(i) === casillero.valor && casillero.valor!=='') {
           casillero.estado = estadosCasillero.CORRECT;
           palabraFormada += casillero.valor;
         } else {
