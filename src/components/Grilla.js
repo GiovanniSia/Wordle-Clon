@@ -5,7 +5,7 @@ export const estadosCasillero = {
     DEFAULT: "default",
   };
 
-export function generarGrilla(cantIntentos,cantLetras,estadosCasillero){
+export function generarGrilla(cantIntentos,cantLetras){
     let ret = [[]];
 
     for (let i = 0; i < cantIntentos; i++) {
@@ -30,8 +30,31 @@ export function generarGrilla(cantIntentos,cantLetras,estadosCasillero){
     return ret;
 }
 
-export function actualizarCasilleros(casilleros, filaEnJuego,palabraCorrecta, estadosCasillero,cantIntentos){
-    let palabraFormada='';
+//Los casilleros en la filaEnJuego son los que tienen la palabra
+export function actualizarCasilleros(casilleros, filaEnJuego,palabraCorrecta,palabraEscrita,cantIntentos){
+  //Ponemos todas las correctas 
+  for (let i = 0; i < casilleros[filaEnJuego].length; i++) {
+    if(palabraEscrita.charAt(i) === palabraCorrecta.charAt(i)){
+      casilleros[filaEnJuego][i].estado = estadosCasillero.CORRECT;
+    }
+
+    casilleros[filaEnJuego][i].activo = false;
+    if(filaEnJuego<cantIntentos-1){
+      casilleros[filaEnJuego+1][i].activo = true;
+    }
+
+  }
+  for (let i = 0; i < casilleros[filaEnJuego].length; i++) {
+    if(palabraCorrecta.includes(palabraEscrita.charAt(i)) && casilleros[filaEnJuego][i].estado !== estadosCasillero.CORRECT){
+      casilleros[filaEnJuego][i].estado = estadosCasillero.PRESENT;
+    }
+    if(!palabraCorrecta.includes(palabraEscrita.charAt(i))){
+      casilleros[filaEnJuego][i].estado = estadosCasillero.ABSENT;
+    }
+  }
+
+  /*  
+  let palabraFormada='';
     for (let i = 0; i < casilleros[filaEnJuego].length; i++) {
         let casillero = casilleros[filaEnJuego][i];
 
@@ -52,5 +75,6 @@ export function actualizarCasilleros(casilleros, filaEnJuego,palabraCorrecta, es
           casilleros[filaEnJuego+1][i].activo = true;
         }
       }
+      */
       return casilleros;
   }

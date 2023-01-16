@@ -3,7 +3,7 @@ import "../css/GrillaPrincipal.css";
 import CasilleroGrilla from "./CasilleroGrilla";
 import { useWindow } from "../hooks/useWindow";
 import {esPalabraValida} from '../service/GeneradorDePalabra';
-import { generarGrilla,actualizarCasilleros,estadosCasillero } from "./Grilla";
+import { generarGrilla,actualizarCasilleros } from "./Grilla";
 
 import Header from './Header';
 import TecladoVirtual from './TecladoVirtual';
@@ -25,7 +25,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
   const cantLetras = useRef(cantLet);
   const cantIntentos = useRef(cantInt);
 
-  const [casilleros,setCasilleros] = useState(() => generarGrilla(cantIntentos.current,cantLetras.current,estadosCasillero));
+  const [casilleros,setCasilleros] = useState(() => generarGrilla(cantIntentos.current,cantLetras.current));
   
   const escribirCasillero = (letra) => {
     casilleros[filaEnJuego][casilleroSeleccionado].valor = letra;
@@ -41,12 +41,9 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
 
     if(palabraEscrita === palabraCorrecta.current){
       setJuegoTerminado(true);
-
       setMsjEmergente({mensaje:'¡ACERTASTE!',mostrarMsj:true});
-    //  setTimeout(()=>{
-     //   setMsjEmergente({mensaje:'GANO',mostrarMsj:false});
-     // },2000);
-      
+      //se ponene en false todos los casilleros
+      casilleros[filaEnJuego].forEach( casillero => casillero.activo = false);
       return;
     }
     setFilaEnJuego(filaEnJuego + 1);
@@ -57,10 +54,14 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
       casilleros[filaEnJuego+1].forEach( casillero => casillero.activo = true);
     }else{
       setMsjEmergente({mensaje:'PERDISTE',mostrarMsj:true});
-      //setTimeout(()=>{
-        //setMsjEmergente({mensaje:'PERDIO',mostrarMsj:false});
-      //},2000);
     }
+  }
+
+  const mostrarMensajeEmergente = (mensaje,tiempo) => {
+    setMsjEmergente({mensaje:mensaje,mostrarMsj:true});
+    setTimeout(()=>{
+      setMsjEmergente({mensaje:mensaje,mostrarMsj:false});
+    },tiempo);
   }
 
   const borrarLetraActual = () => {
@@ -91,17 +92,19 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
       return;
     }
 
-    if(!esPalabraValida(palabraEscrita) && letra === "Enter"){
-      setMsjEmergente({mensaje:'La palabra no se encuentra en la lista',mostrarMsj:true});
-      setTimeout(()=>{
-        setMsjEmergente({mensaje:'La palabra no se encuentra en la lista',mostrarMsj:false});
-      },1500);
+    if(letra === "Enter" && palabraEscrita.length < cantLetras.current){
+      mostrarMensajeEmergente('No hay suficientes letras',1500);
+      return
+    }
+    if(letra === "Enter" && !esPalabraValida(palabraEscrita) ){
+      mostrarMensajeEmergente('La palabra no está en la lista',1500);
       return;
     }
-    if (letra === "Enter" && esPalabraValida(palabraEscrita) && palabraEscrita.length === cantLetras.current) {
-      //para que se cambien los estilos
 
-      setCasilleros(actualizarCasilleros(casilleros, filaEnJuego,palabraCorrecta.current, estadosCasillero,cantIntentos.current));
+    if (letra === "Enter" && esPalabraValida(palabraEscrita) && palabraEscrita.length === cantLetras.current) {
+      console.log('palabra escrita: '+palabraEscrita);
+      //Se cambian los valores de los casilleros, se cambian los estilos
+      setCasilleros(actualizarCasilleros(casilleros, filaEnJuego,palabraCorrecta.current,palabraEscrita,cantIntentos.current));
       actualizarEstadoJuego();
       setPalabraEscrita('');
       return;
