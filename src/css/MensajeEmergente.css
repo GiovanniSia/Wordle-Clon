@@ -1,0 +1,36 @@
+.mensaje-emergente{
+    width: 300px;
+    height: auto;
+    padding: 6px 16px;
+    position: fixed;
+    top:-1000px;
+    left:0;
+    right: 0;
+    margin: 2% auto;
+
+    background-color: black;
+    max-width: calc(100% - 40px);
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0 / 20%) 0px 3px 5px -1px, rgb(0 0 0 / 14%) 0px 6px 10px 0px, rgb(0 0 0 / 12%) 0px 1px 18px 0px;
+    transition: all 300ms ease 0ms;
+    pointer-events: none;
+}
+
+.mensaje-emergente-contenido{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    text-align: center;
+    border-radius: 20px;
+    color:white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.mensaje-emergente-active{
+    top: 14px;
+    transition: all 300ms ease 0ms;
+    pointer-events: none;
+    
+  }

@@ -2,120 +2,66 @@ import { useState, useRef } from "react";
 import "../css/GrillaPrincipal.css";
 import CasilleroGrilla from "./CasilleroGrilla";
 import { useWindow } from "../hooks/useWindow";
+import {esPalabraValida} from '../service/GeneradorDePalabra';
+import { generarGrilla,actualizarCasilleros } from "./Grilla";
 
 import Header from './Header';
 import TecladoVirtual from './TecladoVirtual';
+import MensajeEmergente from "./MensajeEmergente";
 
 const letras = ['a','b','c','d','e','f','g','h','i','j','k','l', 'ñ','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
 const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
   //Convertir a componente
   const [filaEnJuego, setFilaEnJuego] = useState(0);
+  const [casilleroSeleccionado,setCasilleroSeleccionado] = useState(0);
   const [juegoTerminado, setJuegoTerminado] = useState(false);
   const [palabraEscrita, setPalabraEscrita] = useState("");
+  
+  const [msjEmergente, setMsjEmergente] = useState({mensaje:'',mostrarMsj:false});
 
   //Dejar como variables
   const palabraCorrecta = useRef(pCorrecta);
   const cantLetras = useRef(cantLet);
   const cantIntentos = useRef(cantInt);
 
-  const estadosCasillero = {
-    ABSENT: "absent",
-    PRESENT: "present",
-    CORRECT: "correct",
-    DEFAULT: "default",
-  };
-
-  const [casilleros] = useState(() => {
-    let ret = [[]];
-
-    for (let i = 0; i < cantIntentos.current; i++) {
-      let fila = [];
-      for (let j = 0; j < cantLetras.current; j++) {
-        let casillero = {
-          indice: i + "" + j,
-          valor: "",
-          estado: estadosCasillero.DEFAULT,
-          activo: false,
-        };
-        //si es la primer fila
-        if(i===0){
-          casillero.activo = true;
-        }
-        fila[j] = casillero;
-      }
-      
-      ret[i] = fila;
-      fila = [];
-    }
-    return ret;
-  });
-
-  const actualizarCasilleros = () => {
-
-    for (let i = 0; i < casilleros[filaEnJuego].length; i++) {
-      let casillero = casilleros[filaEnJuego][i];
-      if (palabraCorrecta.current.charAt(i) === casillero.valor && casillero.valor!=='') {
-        casillero.estado = estadosCasillero.CORRECT;
-      } else {
-        if (palabraCorrecta.current.includes(casillero.valor) && casillero.valor!=='') {
-          casillero.estado = estadosCasillero.PRESENT;
-        } else {
-          casillero.estado = estadosCasillero.ABSENT;
-        }
-      }
-      casillero.activo = false;
-      if(filaEnJuego<cantIntentos.current-1){
-        casilleros[filaEnJuego+1][i].activo = true;
-      }
-    }
-  };
-
-  const esPalabraValida = () => {
-    return true;
-  };
-
+  const [casilleros,setCasilleros] = useState(() => generarGrilla(cantIntentos.current,cantLetras.current));
+  
   const escribirCasillero = (letra) => {
-    for (let i = 0; i < casilleros[filaEnJuego].length; i++) {
-      let casillero = casilleros[filaEnJuego][i];
-
-      if (casillero.valor === "" && casillero.activo) {
-        casillero.valor = letra;
-        setPalabraEscrita(palabraEscrita + letra);
-        return;
-      }
-    }
+    casilleros[filaEnJuego][casilleroSeleccionado].valor = letra;
+    setPalabraEscrita(palabraEscrita + letra);
+    setCasilleroSeleccionado( (casilleroSeleccionado+1) );
   };
 
   const esLetraValida = (letra) => {
     return letras.includes(letra.toLowerCase());
   };
 
-  const obtenerCasilleroActual = () => {
-    let casPrev=casilleros[filaEnJuego][0];
-    for (let i = 0; i < casilleros[filaEnJuego].length; i++) {
-      if (casilleros[filaEnJuego][i].valor === '') {
-        return casPrev;
-      }else{
-        casPrev=casilleros[filaEnJuego][i];
-      }
-    }
-    return casPrev;
-  };
-
   const actualizarEstadoJuego = () => {
+
     if(palabraEscrita === palabraCorrecta.current){
       setJuegoTerminado(true);
-      alert('gano')
+      setMsjEmergente({mensaje:'¡ACERTASTE!',mostrarMsj:true});
+      //se ponene en false todos los casilleros
+      casilleros[filaEnJuego].forEach( casillero => casillero.activo = false);
       return;
     }
     setFilaEnJuego(filaEnJuego + 1);
-    console.log('fila en juego: '+(filaEnJuego+1)+', cantInt: '+cantIntentos.current);
+    setCasilleroSeleccionado(0);
+
+    //se actualiza fila siguiente
     if(filaEnJuego+1<cantIntentos.current){
       casilleros[filaEnJuego+1].forEach( casillero => casillero.activo = true);
     }else{
-      console.log('perdio');
+      setMsjEmergente({mensaje:'PERDISTE',mostrarMsj:true});
     }
+  }
+
+  const mostrarMensajeEmergente = (mensaje,tiempo) => {
+    setMsjEmergente({mensaje:mensaje,mostrarMsj:true});
+    setTimeout(()=>{
+      setMsjEmergente({mensaje:mensaje,mostrarMsj:false});
+    },tiempo);
   }
 
   const borrarLetraActual = () => {
@@ -124,12 +70,12 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
       return;
     }
     setPalabraEscrita(palabraEscrita.substring(0, palabraEscrita.length - 1));
-    let casilleroAct = obtenerCasilleroActual();
-    casilleroAct.valor = "";
+    casilleros[filaEnJuego][ (casilleroSeleccionado-1) ].valor = "";
+    setCasilleroSeleccionado( (casilleroSeleccionado-1) );
   };
 
   const procesarTecla = (event) => {
-    console.log('se procesa tecla')
+    console.log('palabra correcta: '+palabraCorrecta.current)
     let letra = event;
     if(typeof event !== 'string'){
       letra = event.key;
@@ -146,20 +92,30 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
       return;
     }
 
-    if (letra === "Enter" && esPalabraValida() && palabraEscrita.length === cantLetras.current) {
-      //para que se cambien los estilos
-      actualizarCasilleros();
-      actualizarEstadoJuego();
-      setPalabraEscrita('');
+    if(letra === "Enter" && palabraEscrita.length < cantLetras.current){
+      mostrarMensajeEmergente('No hay suficientes letras',1500);
+      return
+    }
+    if(letra === "Enter" && !esPalabraValida(palabraEscrita) ){
+      mostrarMensajeEmergente('La palabra no está en la lista',1500);
+      return;
     }
 
-    if (esLetraValida(letra) && palabraEscrita.length <= cantLetras.current) {
+    if (letra === "Enter" && esPalabraValida(palabraEscrita) && palabraEscrita.length === cantLetras.current) {
+      console.log('palabra escrita: '+palabraEscrita);
+      //Se cambian los valores de los casilleros, se cambian los estilos
+      setCasilleros(actualizarCasilleros(casilleros, filaEnJuego,palabraCorrecta.current,palabraEscrita,cantIntentos.current));
+      actualizarEstadoJuego();
+      setPalabraEscrita('');
+      return;
+    }
+
+    if (esLetraValida(letra) && palabraEscrita.length < cantLetras.current) {
       escribirCasillero(letra.toUpperCase());
     }
   };
 
   useWindow("keyup", procesarTecla);
-
 
   return (
     <div className="contenedor-principal">
@@ -180,7 +136,11 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
           });
         })}      
       </div>
-      <TecladoVirtual onKeyPressed={procesarTecla}></TecladoVirtual>
+      <TecladoVirtual onKeyPressed={procesarTecla} casillerosGrilla={casilleros}></TecladoVirtual>
+      <MensajeEmergente 
+        mensaje = {msjEmergente.mensaje}
+        mostrarMsj = {msjEmergente.mostrarMsj}
+        />
     </div>
   );
 };
