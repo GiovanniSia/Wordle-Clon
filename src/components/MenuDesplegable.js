@@ -12,26 +12,15 @@ const MenuDesplegable = (props) => {
         <div className="MenuDesplegable">
           {
             <div className='lista'>
+              <nav>
+                <ItemMenu href="normal" msg="Normal" />
 
-              <ItemMenu href="normal" msg="Normal" />
-              <ItemMenu href="tildes" msg="Tildes" />
-              <ItemMenu href="cientifica" msg="Científica" />
-              <ItemMenu href="contrarreloj" msg="Contrarreloj" />
+                <hr className='linea-menu-desplegable' />
 
-              <hr className='linea-menu-desplegable' />
-
-              <ItemMenu href="crear" msg="Crear" />
-
-              <hr className='linea-menu-desplegable' />
-
-              <ItemMenu href="archivo" msg="Archivo" />
-
-              <hr className='linea-menu-desplegable' />
-
-              <ItemMenu href="como-jugar" msg="Cómo jugar" />
-              <ItemMenu href="blog" msg="Blog" />
-              <ItemMenu href="acerca-del-juego" msg="Acerca del juego" />
-              <ItemMenu href="contacto" msg="Contacto" />
+                <ItemMenu href="como-jugar" msg="Cómo jugar" />
+                <ItemMenu href="acerca-del-juego" msg="Acerca del juego" />
+                <ItemMenu href="contacto" msg="Contacto" />
+              </nav>
             </div>
           }
         </div>
