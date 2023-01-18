@@ -1,9 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ItemMenu = (props) => {
   return (
     <>
-      <button className="boton-item-menu">{props.msg}</button>
+      <Link className="boton-item-menu" to={props.href}>{props.msg}</Link>
+      {/* <button className="boton-item-menu">{props.msg}</button> */}
     </>
   );
 }

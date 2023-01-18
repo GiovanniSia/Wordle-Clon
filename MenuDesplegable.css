@@ -23,7 +23,6 @@
 }
 
 .boton-item-menu {
-  display: block;
   background-color: white;
   border: none;
   width: 100%;
@@ -31,7 +30,6 @@
   font-size: 15px;
   padding: 10%;
   margin: 0px;
-  text-decoration: none;
 }
 
 .boton-item-menu:hover {

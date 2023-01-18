@@ -14,19 +14,15 @@ const Header = () => {
         <MenuDesplegable img={menu} />
         <BotonHeader key={2} src={canlendario} />
       </div>
-
       <div>
         <p className="la-palabra">LA PALABRA</p>
         <p className="del-dia">DEL DÍA</p>
       </div>
-
       <div>
         <BotonHeader key={3} src={estadisticas} />
         <BotonHeader key={4} src={configuracion} />
       </div>
-
-
-    </header >
+    </header>
   );
 }
 
