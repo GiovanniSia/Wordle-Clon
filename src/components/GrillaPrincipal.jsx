@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "../css/GrillaPrincipal.css";
 import CasilleroGrilla from "./CasilleroGrilla";
 import { useWindow } from "../hooks/useWindow";
@@ -8,10 +8,11 @@ import { generarGrilla,actualizarCasilleros } from "./Grilla";
 import Header from './Header';
 import TecladoVirtual from './TecladoVirtual';
 import MensajeEmergente from "./MensajeEmergente";
+import VentanaFinal from "./VentanaFinal";
 
 const letras = ['a','b','c','d','e','f','g','h','i','j','k','l', 'ñ','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
-const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
+const GrillaPrincipal = ({ palabraCorrecta, cantLetras, cantIntentos }) => {
   //Convertir a componente
   const [filaEnJuego, setFilaEnJuego] = useState(0);
   const [casilleroSeleccionado,setCasilleroSeleccionado] = useState(0);
@@ -19,13 +20,11 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
   const [palabraEscrita, setPalabraEscrita] = useState("");
   
   const [msjEmergente, setMsjEmergente] = useState({mensaje:'',mostrarMsj:false});
+  
+  const [showModal,setShowModal] = useState(false);
+  const [mensajeModal, setMensajeModal] = useState('');
 
-  //Dejar como variables
-  const palabraCorrecta = useRef(pCorrecta);
-  const cantLetras = useRef(cantLet);
-  const cantIntentos = useRef(cantInt);
-
-  const [casilleros,setCasilleros] = useState(() => generarGrilla(cantIntentos.current,cantLetras.current));
+  const [casilleros,setCasilleros] = useState(() => generarGrilla(cantIntentos,cantLetras));
   
   const escribirCasillero = (letra) => {
     casilleros[filaEnJuego][casilleroSeleccionado].valor = letra;
@@ -39,21 +38,26 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
 
   const actualizarEstadoJuego = () => {
 
-    if(palabraEscrita === palabraCorrecta.current){
+    if(palabraEscrita === palabraCorrecta){
       setJuegoTerminado(true);
       setMsjEmergente({mensaje:'¡ACERTASTE!',mostrarMsj:true});
       //se ponene en false todos los casilleros
       casilleros[filaEnJuego].forEach( casillero => casillero.activo = false);
+      setShowModal(true);
+      setMensajeModal('GANASTE');
+      console.log(showModal);
       return;
     }
     setFilaEnJuego(filaEnJuego + 1);
     setCasilleroSeleccionado(0);
 
     //se actualiza fila siguiente
-    if(filaEnJuego+1<cantIntentos.current){
+    if(filaEnJuego+1<cantIntentos){
       casilleros[filaEnJuego+1].forEach( casillero => casillero.activo = true);
     }else{
       setMsjEmergente({mensaje:'PERDISTE',mostrarMsj:true});
+      setShowModal(true);
+      setMensajeModal('PERDISTE');
     }
   }
 
@@ -75,7 +79,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
   };
 
   const procesarTecla = (event) => {
-    console.log('palabra correcta: '+palabraCorrecta.current)
+    console.log('palabra correcta: '+palabraCorrecta)
     let letra = event;
     if(typeof event !== 'string'){
       letra = event.key;
@@ -84,7 +88,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
     if(juegoTerminado){
       return;
     }
-    if (filaEnJuego >= cantIntentos.current || juegoTerminado) {
+    if (filaEnJuego >= cantIntentos || juegoTerminado) {
       return;
     }
     if (letra === "Backspace") {
@@ -92,7 +96,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
       return;
     }
 
-    if(letra === "Enter" && palabraEscrita.length < cantLetras.current){
+    if(letra === "Enter" && palabraEscrita.length < cantLetras){
       mostrarMensajeEmergente('No hay suficientes letras',1500);
       return
     }
@@ -101,16 +105,16 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
       return;
     }
 
-    if (letra === "Enter" && esPalabraValida(palabraEscrita) && palabraEscrita.length === cantLetras.current) {
+    if (letra === "Enter" && esPalabraValida(palabraEscrita) && palabraEscrita.length === cantLetras) {
       console.log('palabra escrita: '+palabraEscrita);
       //Se cambian los valores de los casilleros, se cambian los estilos
-      setCasilleros(actualizarCasilleros(casilleros, filaEnJuego,palabraCorrecta.current,palabraEscrita,cantIntentos.current));
+      setCasilleros(actualizarCasilleros(casilleros, filaEnJuego,palabraCorrecta,palabraEscrita,cantIntentos));
       actualizarEstadoJuego();
       setPalabraEscrita('');
       return;
     }
 
-    if (esLetraValida(letra) && palabraEscrita.length < cantLetras.current) {
+    if (esLetraValida(letra) && palabraEscrita.length < cantLetras) {
       escribirCasillero(letra.toUpperCase());
     }
   };
@@ -141,6 +145,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLet, cantInt }) => {
         mensaje = {msjEmergente.mensaje}
         mostrarMsj = {msjEmergente.mostrarMsj}
         />
+        <VentanaFinal mensaje={mensajeModal} mostrarModal={showModal} palabraCorrecta={palabraCorrecta}/>
     </div>
   );
 };

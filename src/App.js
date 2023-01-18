@@ -3,10 +3,12 @@ import "./App.css";
 import './App.css';
 
 import { generarPalabra } from './service/GeneradorDePalabra';
-import { useRef } from 'react';
+import { useState } from 'react';
 
 function App() {
-  const palabraDelDia = useRef(establecerPalabra());
+  const [palabraDelDia,setPalabraDelDia] = useState(establecerPalabra());
+  const [cantLetras] = useState(5);
+  const [cantIntentos] = useState(6);
 
   function establecerPalabra(){
     let palabra =generarPalabra();
@@ -16,10 +18,10 @@ function App() {
     //se quitan las tildes y se pone en mayuscula
     return palabra.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
   }
-
+  
   return (
     <div className="App">
-      <GrillaPrincipal pCorrecta={palabraDelDia.current} cantLet={5} cantInt={6} ></GrillaPrincipal>
+      <GrillaPrincipal palabraCorrecta={palabraDelDia} cantLetras={cantLetras} cantIntentos={cantIntentos} ></GrillaPrincipal>
     </div>
   );
 };
