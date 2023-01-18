@@ -1,0 +1,115 @@
+.como-jugar {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+
+}
+
+.titulo {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+  margin-top: 20px;
+
+}
+
+.fila1 {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.fila2 {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.fila3 {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.columna1 {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  width: 100%;
+  gap: 8px;
+}
+
+.columna2 {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  gap: 8px;
+}
+
+.letra {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 100%;
+  max-width: 62px;
+  height: 100%;
+  max-height: 62px;
+  color: white;
+  font-size: 1.875rem;
+  font-weight: 700;
+  border-radius: 5px;
+  user-select: none;
+  cursor: default;
+  padding: 10px;
+
+}
+
+.fondo-verde {
+  background: #43a047;
+}
+
+.fondo-amarillo {
+  background: #e4a81d;
+}
+
+.fondo-gris {
+  background: #757575;
+}
+
+.contenido {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  width: 550px;
+  margin: 0 auto;
+}
+
+.texto-como-jugar {
+  margin: 16px 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.tipo-colores-explicacion {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 10px;
+}
+
+.tipo-colores-explicacion .texto-como-jugar {
+  margin: 5px 0px 5px 10px;
+}

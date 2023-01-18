@@ -6,7 +6,7 @@ export default function Root() {
   return (
     <>
       <Header />
-      <div id="dsafads">
+      <div id="ventanas">
         <Outlet />
       </div>
     </>

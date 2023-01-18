@@ -2,12 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import PaginaError from "./routes/pagina-error";
-import AcercaDelJuego from "./components/Acerca-del-juego";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MensajeNav from './components/MensajeNav';
 import Root from './routes/root';
+import ComoJugar from './components/ComoJugar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,7 +17,7 @@ root.render(
           {/* <Route path='/' element={<App />} /> */}
           <Route path='/Normal' element={<App />} />
           <Route path='/linea-menu-desplegable' element={<MensajeNav />} />
-          <Route path='/como-jugar' element={<MensajeNav />} />
+          <Route path='/como-jugar' element={<ComoJugar />} />
           <Route path='/acerca-del-juego' element={<MensajeNav />} />
           <Route path='/contacto' element={<MensajeNav />} />
 
