@@ -5,6 +5,8 @@ import { useWindow } from "../hooks/useWindow";
 import {esPalabraValida} from '../service/GeneradorDePalabra';
 import { generarGrilla,actualizarCasilleros } from "./Grilla";
 
+import { generarPalabra} from '../service/GeneradorDePalabra';
+
 import Header from './Header';
 import TecladoVirtual from './TecladoVirtual';
 import MensajeEmergente from "./MensajeEmergente";
@@ -46,6 +48,7 @@ const GrillaPrincipal = ({ palabraCorrecta, cantLetras, cantIntentos }) => {
       setShowModal(true);
       setMensajeModal('GANASTE');
       console.log(showModal);
+      setFilaEnJuego(filaEnJuego + 1);
       return;
     }
     setFilaEnJuego(filaEnJuego + 1);
@@ -119,6 +122,15 @@ const GrillaPrincipal = ({ palabraCorrecta, cantLetras, cantIntentos }) => {
     }
   };
 
+  const volverAJugar = (reload) => {
+    if(reload){
+      //REINICIAR: PALABRACORRECTA, CASILLEROS, TECLADO
+      palabraCorrecta = generarPalabra(cantLetras);
+      setCasilleros ( generarGrilla(cantIntentos,cantLetras) );
+
+    }
+  }
+
   useWindow("keyup", procesarTecla);
 
   return (
@@ -140,12 +152,12 @@ const GrillaPrincipal = ({ palabraCorrecta, cantLetras, cantIntentos }) => {
           });
         })}      
       </div>
-      <TecladoVirtual onKeyPressed={procesarTecla} casillerosGrilla={casilleros}></TecladoVirtual>
+      <TecladoVirtual onKeyPressed={procesarTecla} casillerosGrillaJugada={casilleros[ (filaEnJuego===0 ? 0 : filaEnJuego-1)]}></TecladoVirtual>
       <MensajeEmergente 
         mensaje = {msjEmergente.mensaje}
         mostrarMsj = {msjEmergente.mostrarMsj}
         />
-        <VentanaFinal mensaje={mensajeModal} mostrarModal={showModal} palabraCorrecta={palabraCorrecta}/>
+        <VentanaFinal mensaje={mensajeModal} mostrarModal={showModal} palabraCorrecta={palabraCorrecta} volverAJugar={volverAJugar}/>
     </div>
   );
 };

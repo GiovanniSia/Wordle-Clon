@@ -43,6 +43,11 @@
   opacity: .5;
 }
 
+.tecla:hover,
+.tecla-larga:focus {
+  opacity: 1;
+}
+
 .tecla-larga {
   width: 25%;
   height: 60px;
