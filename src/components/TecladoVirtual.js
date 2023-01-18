@@ -27,14 +27,16 @@ const TecladoVirtual = ({ onKeyPressed, casillerosGrillaJugada }) => {
    //console.log('letra: '+tecla.letra+', estado: '+tecla.estado)
    for( let i=0; i<casillerosGrillaJugada.length; i++){
     if(casillerosGrillaJugada[i].valor === tecla.letra){
-      console.log('letraCasilla: '+casillerosGrillaJugada[i].valor+', letraEscr: '+tecla.letra)
       if(casillerosGrillaJugada[i].estado === estadosCasillero.CORRECT){
+        tecla.estado=estadosCasillero.CORRECT;
         return estadosCasillero.CORRECT;
       }
       if(casillerosGrillaJugada[i].estado === estadosCasillero.PRESENT && estado !== estadosCasillero.PRESENT){
+        tecla.estado=estadosCasillero.PRESENT;
         estado=estadosCasillero.PRESENT;
       }
       if(casillerosGrillaJugada[i].estado === estadosCasillero.ABSENT && tecla.estado === estadosCasillero.DEFAULT){
+        tecla.estado=estadosCasillero.ABSENT;
         estado=estadosCasillero.ABSENT;
       }
     }
