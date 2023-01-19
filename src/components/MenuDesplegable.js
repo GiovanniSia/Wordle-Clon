@@ -18,7 +18,6 @@ const MenuDesplegable = (props) => {
                 <hr className='linea-menu-desplegable' />
 
                 <ItemMenu href="como-jugar" msg="Cómo jugar" />
-                <ItemMenu href="acerca-del-juego" msg="Acerca del juego" />
                 <ItemMenu href="contacto" msg="Contacto" />
               </nav>
             </div>

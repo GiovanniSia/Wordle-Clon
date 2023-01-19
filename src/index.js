@@ -14,11 +14,10 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Root />}>
-          {/* <Route path='/' element={<App />} /> */}
+          <Route path='/' element={<App />} />
           <Route path='/Normal' element={<App />} />
           <Route path='/linea-menu-desplegable' element={<MensajeNav />} />
           <Route path='/como-jugar' element={<ComoJugar />} />
-          <Route path='/acerca-del-juego' element={<MensajeNav />} />
           <Route path='/contacto' element={<MensajeNav />} />
 
           <Route path='*' element={<div><h1>404 - Not Fount</h1></div>} />
