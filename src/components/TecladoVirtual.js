@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import "../css/TecladoVirtual.css";
 import { estadosCasillero } from "./Grilla";
-
-const letrasFila1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
-const letrasFila2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L", "Ñ"];
-const letrasFila3 = ["Enter", "Z", "X", "C", "V", "B", "N", "M", "Backspace"];
+import {teclasVirtualesContext} from '../context/TeclasVirtualesContext'
 
 const TecladoVirtual = ({ onKeyPressed, casillerosGrillaJugada }) => {
   
-  const [teclasFila1] = useState( () => generarTeclasVirtuales(letrasFila1));
-  const [teclasFila2] = useState( () => generarTeclasVirtuales(letrasFila2));
-  const [teclasFila3] = useState( () => generarTeclasVirtuales(letrasFila3));
+  const { tecladoVirtual } = useContext(teclasVirtualesContext);
 
-  function generarTeclasVirtuales(fila){
-    let ret = []
-    fila.forEach( letra => ret.push({letra:letra, estado: estadosCasillero.DEFAULT}));
+
+  /*
+  function generarTeclasVirtuales(){
+    let ret = [[]]
+    letrasFila1.forEach( letra => ret[0].push({letra:letra, estado: estadosCasillero.DEFAULT}));
+    letrasFila2.forEach( letra => ret[1].push({letra:letra, estado: estadosCasillero.DEFAULT}));
+    letrasFila3.forEach( letra => ret[2].push({letra:letra, estado: estadosCasillero.DEFAULT}));
     return ret;
   }
+  */
 
   function establecerEstadoBoton(tecla) {
    if(tecla.estado === estadosCasillero.CORRECT){
@@ -77,7 +77,7 @@ const TecladoVirtual = ({ onKeyPressed, casillerosGrillaJugada }) => {
   return (
     <div className="tecladoVirtual">
       <div className="fila">
-        {teclasFila1.map((tecla, index) => (
+        {tecladoVirtual[0].map((tecla, index) => (
           //() => props.manejarClic( props.children )
           <button
             className={`tecla ${establecerEstadoBoton(tecla)} `}
@@ -90,7 +90,7 @@ const TecladoVirtual = ({ onKeyPressed, casillerosGrillaJugada }) => {
       </div>
 
       <div className="fila">
-        {teclasFila2.map((tecla, index) => (
+        {tecladoVirtual[1].map((tecla, index) => (
           <button
             className={`tecla ${establecerEstadoBoton(tecla)}`}
             onClick={() => presionarTecla(tecla.letra)}
@@ -102,7 +102,7 @@ const TecladoVirtual = ({ onKeyPressed, casillerosGrillaJugada }) => {
       </div>
 
       <div className="fila">
-        {teclasFila3.map((tecla, index) => (
+        {tecladoVirtual[2].map((tecla, index) => (
           <button
             className={
               tecla.letra.length > 1

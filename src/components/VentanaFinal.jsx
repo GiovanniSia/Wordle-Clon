@@ -7,8 +7,10 @@ export default function VentanaFinal({ mensaje, mostrarModal,palabraCorrecta,vol
     document.getElementById('contenedor-modal').classList.remove('modal-show')
   }
 
-  function jugarDeNuevo(){
-    return volverAJugar(true);
+  function reiniciar(){
+    console.log('se hizo click en reiniciar')
+    cerrarVentanaModal();
+    return volverAJugar()
   }
 
 
@@ -20,7 +22,7 @@ export default function VentanaFinal({ mensaje, mostrarModal,palabraCorrecta,vol
         <div className="modal-items">
           <p className="modal-items-mensaje item">{`${mensaje}!`}</p>
           <p className="item">{`La palabra corracta era: ${palabraCorrecta}`}</p>
-          <button className="btn-modal item" onClick={() => jugarDeNuevo()}>JUGAR DE NUEVO &#10227;</button>
+          <button className="btn-modal item" onClick={(reiniciar)}>JUGAR DE NUEVO &#10227;</button>
         </div>
       </div>
     </div>

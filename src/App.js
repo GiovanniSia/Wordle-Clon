@@ -1,9 +1,10 @@
-import GrillaPrincipal from './components/GrillaPrincipal';
+import GrillaPrincipal from "./components/GrillaPrincipal";
 import "./App.css";
-import './App.css';
+import "./App.css";
 
-import { generarPalabra } from './service/GeneradorDePalabra';
-import { useState } from 'react';
+import { generarPalabra } from "./service/GeneradorDePalabra";
+import { useState } from "react";
+import TeclasVirtualesCompContext from "./context/TeclasVirtualesCompContext";
 
 function App() {
   const [cantLetras] = useState(5);
@@ -11,9 +12,15 @@ function App() {
   const [palabraDelDia] = useState(() => generarPalabra(cantLetras));
 
   return (
-    <div className="App">
-      <GrillaPrincipal palabraCorrecta={palabraDelDia} cantLetras={cantLetras} cantIntentos={cantIntentos} ></GrillaPrincipal>
-    </div>
+    <TeclasVirtualesCompContext>
+      <div className="App">
+        <GrillaPrincipal
+          pCorrecta={palabraDelDia}
+          cantLetras={cantLetras}
+          cantIntentos={cantIntentos}
+        ></GrillaPrincipal>
+      </div>
+    </TeclasVirtualesCompContext>
   );
-};
+}
 export default App;

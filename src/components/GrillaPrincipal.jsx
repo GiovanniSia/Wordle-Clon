@@ -1,28 +1,35 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "../css/GrillaPrincipal.css";
 import CasilleroGrilla from "./CasilleroGrilla";
 import { useWindow } from "../hooks/useWindow";
-import {esPalabraValida} from '../service/GeneradorDePalabra';
+import {esPalabraValida,generarPalabra} from '../service/GeneradorDePalabra';
 import { generarGrilla,actualizarCasilleros } from "./Grilla";
 
-import { generarPalabra} from '../service/GeneradorDePalabra';
-
 import Header from './Header';
+import { teclasVirtualesContext } from '../context/TeclasVirtualesContext';
+
 import TecladoVirtual from './TecladoVirtual';
 import MensajeEmergente from "./MensajeEmergente";
 import VentanaFinal from "./VentanaFinal";
 
 const letras = ['a','b','c','d','e','f','g','h','i','j','k','l', 'ñ','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
-const GrillaPrincipal = ({ palabraCorrecta, cantLetras, cantIntentos }) => {
-  //Convertir a componente
+const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
+
+  //RELOAD
+  const { reiniciarTeclasVirtuales } = useContext(teclasVirtualesContext);
+
+  //ESTADO DE JUEGO
   const [filaEnJuego, setFilaEnJuego] = useState(0);
   const [casilleroSeleccionado,setCasilleroSeleccionado] = useState(0);
   const [juegoTerminado, setJuegoTerminado] = useState(false);
   const [palabraEscrita, setPalabraEscrita] = useState("");
+  const [palabraCorrecta,setPalabraCorrecta] = useState(pCorrecta);
   
+//MENSAJE EMERGENTE
   const [msjEmergente, setMsjEmergente] = useState({mensaje:'',mostrarMsj:false});
-  
+
+  //MENSAJE FINAL
   const [showModal,setShowModal] = useState(false);
   const [mensajeModal, setMensajeModal] = useState('');
 
@@ -41,8 +48,8 @@ const GrillaPrincipal = ({ palabraCorrecta, cantLetras, cantIntentos }) => {
   const actualizarEstadoJuego = () => {
 
     if(palabraEscrita === palabraCorrecta){
+      console.log('se deberia mostrar pantalla final')
       setJuegoTerminado(true);
-      setMsjEmergente({mensaje:'¡ACERTASTE!',mostrarMsj:true});
       //se ponene en false todos los casilleros
       casilleros[filaEnJuego].forEach( casillero => casillero.activo = false);
       setShowModal(true);
@@ -58,7 +65,7 @@ const GrillaPrincipal = ({ palabraCorrecta, cantLetras, cantIntentos }) => {
     if(filaEnJuego+1<cantIntentos){
       casilleros[filaEnJuego+1].forEach( casillero => casillero.activo = true);
     }else{
-      setMsjEmergente({mensaje:'PERDISTE',mostrarMsj:true});
+      mostrarMensajeEmergente('¡PERDISTE!',1500);
       setShowModal(true);
       setMensajeModal('PERDISTE');
     }
@@ -122,13 +129,18 @@ const GrillaPrincipal = ({ palabraCorrecta, cantLetras, cantIntentos }) => {
     }
   };
 
-  const volverAJugar = (reload) => {
-    if(reload){
+  const volverAJugar = () => {
+    console.log('se reinicia')
+    setTimeout(()=>{setPalabraCorrecta(generarPalabra(cantLetras))},1000);
+      reiniciarTeclasVirtuales();
       //REINICIAR: PALABRACORRECTA, CASILLEROS, TECLADO
-      palabraCorrecta = generarPalabra(cantLetras);
+      
       setCasilleros ( generarGrilla(cantIntentos,cantLetras) );
-
-    }
+      setFilaEnJuego(0);
+      setCasilleroSeleccionado(0);
+      setJuegoTerminado(false);
+      setPalabraEscrita('');
+      setShowModal(false);
   }
 
   useWindow("keyup", procesarTecla);
@@ -136,6 +148,7 @@ const GrillaPrincipal = ({ palabraCorrecta, cantLetras, cantIntentos }) => {
   return (
     <div className="contenedor-principal">
     <Header />
+
       <div className="grilla-principal-contenedor">
       
         {casilleros.map((fila) => {
@@ -158,7 +171,10 @@ const GrillaPrincipal = ({ palabraCorrecta, cantLetras, cantIntentos }) => {
         mostrarMsj = {msjEmergente.mostrarMsj}
         />
         <VentanaFinal mensaje={mensajeModal} mostrarModal={showModal} palabraCorrecta={palabraCorrecta} volverAJugar={volverAJugar}/>
+
     </div>
+    
+
   );
 };
 export default GrillaPrincipal;
