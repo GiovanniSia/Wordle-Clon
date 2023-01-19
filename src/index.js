@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MensajeNav from './components/MensajeNav';
 import Root from './routes/root';
 import ComoJugar from './components/ComoJugar';
+import Contacto from "./components/Contacto";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,9 +16,8 @@ root.render(
         <Route path='/' element={<Root />}>
           <Route path='/' element={<App />} />
           <Route path='/Normal' element={<App />} />
-          <Route path='/linea-menu-desplegable' element={<MensajeNav />} />
           <Route path='/como-jugar' element={<ComoJugar />} />
-          <Route path='/contacto' element={<MensajeNav />} />
+          <Route path='/contacto' element={<Contacto />} />
 
           <Route path='*' element={<div><h1>404 - Not Fount</h1></div>} />
         </Route>

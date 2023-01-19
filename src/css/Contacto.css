@@ -1,0 +1,12 @@
+.contenedor-contacto {
+  text-align: center;
+  padding: 10px;
+  ;
+}
+
+.contacto-titulo {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 3px;
+  justify-content: center;
+}
