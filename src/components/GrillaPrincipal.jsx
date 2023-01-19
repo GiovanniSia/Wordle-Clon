@@ -12,6 +12,8 @@ import TecladoVirtual from './TecladoVirtual';
 import MensajeEmergente from "./MensajeEmergente";
 import VentanaFinal from "./VentanaFinal";
 
+import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+
 const letras = ['a','b','c','d','e','f','g','h','i','j','k','l', 'ñ','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
 const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
@@ -56,6 +58,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
       setMensajeModal('GANASTE');
       console.log(showModal);
       setFilaEnJuego(filaEnJuego + 1);
+      confetti();
       return;
     }
     setFilaEnJuego(filaEnJuego + 1);
