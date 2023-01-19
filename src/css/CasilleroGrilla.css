@@ -45,3 +45,30 @@
     color: white;
 }
 
+/*ANIMACION AL ESCRIBIR UNA LETRA*/
+
+.pop{
+    animation: pop 0.25s ease-in-out 1 forwards;
+}
+@keyframes pop {
+    0%, 100% {transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+
+/*ANIMACION AL ESCRIBIR FILA*/
+
+.pulsado{
+    animation: spin .25s ease-out 1 forwards;
+}
+/*
+  .grilla-principal-contenedor button:nth-child(1) { animation-delay: 0s}
+  .grilla-principal-contenedor button:nth-child(2) { animation-delay: 0.2s}
+  .grilla-principal-contenedor button:nth-child(3) { animation-delay: 0.4s}
+  .grilla-principal-contenedor button:nth-child(4) { animation-delay: 0.6s}
+  .grilla-principal-contenedor button:nth-child(5) { animation-delay: 0.8s}
+*/
+  @keyframes spin {
+    0% {transform: scaleY(0);}
+    100% {transform: scaleY(1);}
+  }

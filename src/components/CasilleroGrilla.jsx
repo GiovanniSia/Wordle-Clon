@@ -10,7 +10,7 @@ activo: falso,true
 */
 const LetraIngreso = ( {indice,valor, estado,activo} ) => {
     return (
-        <button className={`letraIngreso ${estado}`} disabled={activo ? false : true}>
+        <button className={`letraIngreso ${estado} ${valor!=='' ? 'pop' : ''} ${(!activo && valor!=='') ? 'pulsado' : ''}`} disabled={activo ? false : true}>
             {valor}
         </button>
     )

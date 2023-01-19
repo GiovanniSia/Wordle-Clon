@@ -178,3 +178,12 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
   );
 };
 export default GrillaPrincipal;
+
+/*
+API url=https://blog.greenborn.com.ar/2022/03/04/actualizacion-en-api-de-palabras-al-azar/
+fetch('https://clientes.api.greenborn.com.ar/public-random-word?c=1&l=5')
+  .then(response => response.json())
+	.then(valor => console.log(valor))
+	.catch(error => console.log(error))
+
+*/

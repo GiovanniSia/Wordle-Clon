@@ -2,7 +2,6 @@ import "../css/VentanaFinal.css";
 
 export default function VentanaFinal({ mensaje, mostrarModal,palabraCorrecta,volverAJugar }) {
   function cerrarVentanaModal(){
-    console.log('se hizo click enla x')
     mostrarModal = false;
     document.getElementById('contenedor-modal').classList.remove('modal-show')
   }
