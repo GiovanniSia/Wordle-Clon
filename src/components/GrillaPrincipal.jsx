@@ -14,7 +14,7 @@ import VentanaFinal from "./VentanaFinal";
 
 import confetti from 'https://cdn.skypack.dev/canvas-confetti';
 
-const letras = ['a','b','c','d','e','f','g','h','i','j','k','l', 'ñ','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+const letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'ñ', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
 
@@ -23,7 +23,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
 
   //ESTADO DE JUEGO
   const [filaEnJuego, setFilaEnJuego] = useState(0);
-  const [casilleroSeleccionado,setCasilleroSeleccionado] = useState(0);
+  const [casilleroSeleccionado, setCasilleroSeleccionado] = useState(0);
   const [juegoTerminado, setJuegoTerminado] = useState(false);
   const [palabraEscrita, setPalabraEscrita] = useState("");
   const [palabraCorrecta,setPalabraCorrecta] = useState(pCorrecta);
@@ -40,7 +40,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
   const escribirCasillero = (letra) => {
     casilleros[filaEnJuego][casilleroSeleccionado].valor = letra;
     setPalabraEscrita(palabraEscrita + letra);
-    setCasilleroSeleccionado( (casilleroSeleccionado+1) );
+    setCasilleroSeleccionado((casilleroSeleccionado + 1));
   };
 
   const esLetraValida = (letra) => {
@@ -74,11 +74,11 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
     }
   }
 
-  const mostrarMensajeEmergente = (mensaje,tiempo) => {
-    setMsjEmergente({mensaje:mensaje,mostrarMsj:true});
-    setTimeout(()=>{
-      setMsjEmergente({mensaje:mensaje,mostrarMsj:false});
-    },tiempo);
+  const mostrarMensajeEmergente = (mensaje, tiempo) => {
+    setMsjEmergente({ mensaje: mensaje, mostrarMsj: true });
+    setTimeout(() => {
+      setMsjEmergente({ mensaje: mensaje, mostrarMsj: false });
+    }, tiempo);
   }
 
   const borrarLetraActual = () => {
@@ -87,18 +87,18 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
       return;
     }
     setPalabraEscrita(palabraEscrita.substring(0, palabraEscrita.length - 1));
-    casilleros[filaEnJuego][ (casilleroSeleccionado-1) ].valor = "";
-    setCasilleroSeleccionado( (casilleroSeleccionado-1) );
+    casilleros[filaEnJuego][(casilleroSeleccionado - 1)].valor = "";
+    setCasilleroSeleccionado((casilleroSeleccionado - 1));
   };
 
   const procesarTecla = (event) => {
     console.log('palabra correcta: '+palabraCorrecta)
     let letra = event;
-    if(typeof event !== 'string'){
+    if (typeof event !== 'string') {
       letra = event.key;
     }
 
-    if(juegoTerminado){
+    if (juegoTerminado) {
       return;
     }
     if (filaEnJuego >= cantIntentos || juegoTerminado) {
@@ -113,8 +113,8 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
       mostrarMensajeEmergente('No hay suficientes letras',1500);
       return
     }
-    if(letra === "Enter" && !esPalabraValida(palabraEscrita) ){
-      mostrarMensajeEmergente('La palabra no está en la lista',1500);
+    if (letra === "Enter" && !esPalabraValida(palabraEscrita)) {
+      mostrarMensajeEmergente('La palabra no está en la lista', 1500);
       return;
     }
 
@@ -153,7 +153,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
     <Header />
 
       <div className="grilla-principal-contenedor">
-      
+
         {casilleros.map((fila) => {
           return fila.map((casillero) => {
             return (
@@ -166,7 +166,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
               ></CasilleroGrilla>
             );
           });
-        })}      
+        })}
       </div>
       <TecladoVirtual onKeyPressed={procesarTecla} casillerosGrillaJugada={casilleros[ (filaEnJuego===0 ? 0 : filaEnJuego-1)]}></TecladoVirtual>
       <MensajeEmergente 

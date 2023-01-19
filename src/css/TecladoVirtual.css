@@ -12,7 +12,7 @@
   flex-direction: column;
   align-items: center;
   max-width: 1200px;
-  margin: auto auto 0 auto;
+  margin: 0px auto 0px auto;
 }
 
 .fila {
@@ -100,7 +100,7 @@
   }
 
   .Enviar2 {
-      display: flex;
+    display: flex;
 
   }
 
