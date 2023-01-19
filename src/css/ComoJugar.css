@@ -113,3 +113,11 @@
 .tipo-colores-explicacion .texto-como-jugar {
   margin: 5px 0px 5px 10px;
 }
+
+@media all and (max-width:560px) {
+  .contenido {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
