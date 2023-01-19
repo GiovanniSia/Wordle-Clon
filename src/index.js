@@ -8,6 +8,7 @@ import Root from './routes/root';
 import ComoJugar from './components/ComoJugar';
 import Contacto from "./components/Contacto";
 import Configuracion from './components/Configuracion';
+import ErrorPage from './routes/pagina-error';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,7 +21,7 @@ root.render(
           <Route path='/como-jugar' element={<ComoJugar />} />
           <Route path='/contacto' element={<Contacto />} />
           <Route path='/configuracion' element={<Configuracion />} />
-          <Route path='*' element={<div><h1>404 - Not Fount</h1></div>} />
+          <Route path='*' element={<ErrorPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
