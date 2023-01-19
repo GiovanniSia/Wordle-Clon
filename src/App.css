@@ -15,8 +15,12 @@ body {
   flex-direction: column;
 }
 
-#root,
-.App {
+#root {
   height: 100%;
+  width: 100%;
+}
+
+.App{
+  height: 95%;
   width: 100%;
 }

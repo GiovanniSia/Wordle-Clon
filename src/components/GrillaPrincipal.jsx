@@ -5,7 +5,6 @@ import { useWindow } from "../hooks/useWindow";
 import {esPalabraValida,generarPalabra} from '../service/GeneradorDePalabra';
 import { generarGrilla,actualizarCasilleros } from "./Grilla";
 
-import Header from './Header';
 import { teclasVirtualesContext } from '../context/TeclasVirtualesContext';
 
 import TecladoVirtual from './TecladoVirtual';
@@ -150,8 +149,6 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
 
   return (
     <div className="contenedor-principal">
-    <Header />
-
       <div className="grilla-principal-contenedor">
 
         {casilleros.map((fila) => {
