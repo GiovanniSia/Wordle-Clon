@@ -16,7 +16,7 @@ const Header = () => {
         <p className="del-dia">DEL DÍA</p>
       </div>
       <div>
-        <BotonHeader key={4} src={configuracion} />
+        <BotonHeader key={4} href="configuracion" src={configuracion} />
       </div>
     </header>
   );

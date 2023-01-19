@@ -38,7 +38,7 @@ header {
 }
 
 .boton-header:hover {
-  background-color: cyan;
+  background-color: #fff;
   border-radius: 10px;
 
   outline: 0px;
@@ -46,6 +46,6 @@ header {
 }
 
 .img-header {
-  width: 35px;
+  width: 40px;
   padding: 5px;
 }

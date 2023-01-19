@@ -1,9 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const BotonHeader = (props) => {
   return (
     <>
-      <button onClick={props.onClick} className="boton-header"><img className="img-header" src={props.src} alt="" /></button>
+      <Link onClick={props.onClick} className="boton-header" to={props.href}><img className="img-header" src={props.src} alt="" /></Link>
+      {/* <button onClick={props.onClick} className="boton-header"><img className="img-header" src={props.src} alt="" /></button> */}
     </>
   );
 };

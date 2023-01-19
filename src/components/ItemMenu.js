@@ -5,7 +5,6 @@ const ItemMenu = (props) => {
   return (
     <>
       <Link className="boton-item-menu" to={props.href}>{props.msg}</Link>
-      {/* <button className="boton-item-menu">{props.msg}</button> */}
     </>
   );
 }
