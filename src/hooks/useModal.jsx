@@ -1,5 +1,5 @@
 // Va en la carpeta hooks
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export const useModal = (initialValue = false) => {
   const [isOpen, setIsOpen] = useState(initialValue);

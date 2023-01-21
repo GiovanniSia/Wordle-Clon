@@ -1,5 +1,4 @@
 import React from 'react';
-import "../css/Configuracion.css";
 
 const Configuracion = ({ isOpen, closeModal }) => {
   return (

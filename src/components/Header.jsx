@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "../css/Header.css"
 import menu from "../icons/menu.png";
 import configuracion from "../icons/configuracion.png";

@@ -13,9 +13,7 @@
 .contenedor-configuracion {
   position: relative;
   padding: 3rem;
-  min-width: 520px;
-  max-width: 480px;
-  min-height: 200px;
+  max-width: 540px;
   max-height: 600px;
   overflow-y: auto;
   background-color: #fff;
@@ -115,6 +113,6 @@ input:checked+.slider:before {
 
 @media all and (max-width:600px) {
   .contenedor-configuracion {
-    width: 85%;
+    width: 90%;
   }
 }
