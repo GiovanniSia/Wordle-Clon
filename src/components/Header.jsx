@@ -8,7 +8,7 @@ import MenuDesplegable from './MenuDesplegable';
 const Header = () => {
   return (
     <header>
-      <div>
+      <div className='header-item'>
         <MenuDesplegable img={menu} />
       </div>
       <div>
@@ -16,7 +16,7 @@ const Header = () => {
         <p className="del-dia">DEL DÍA</p>
       </div>
       <div>
-        <BotonHeader key={4} href="configuracion" src={configuracion} />
+        <BotonHeader key={4} tipo={'boton-header__config'} href="configuracion" src={configuracion} />
       </div>
     </header>
   );
