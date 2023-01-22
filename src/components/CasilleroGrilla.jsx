@@ -6,11 +6,11 @@ id valor por defecto
 indice: Posicion en el tablero
 valor: Letra escrita
 estado: 'absent','present','correct','error'
-activo: falso,true
+activo: falso,true //es para saber si esta en juego
 */
 const LetraIngreso = ( {indice,valor, estado,activo} ) => {
     return (
-        <button className={`letraIngreso ${estado} ${valor!=='' ? 'pop' : ''} ${(!activo && valor!=='') ? 'pulsado' : ''}`} disabled={activo ? false : true}>
+        <button id = {indice} className={`letraIngreso ${estado}-grilla ${valor!=='' ? 'pop' : ''} ${(!activo && valor!=='') ? 'pulsado' : ''}`} disabled={activo ? false : true}>
             {valor}
         </button>
     )

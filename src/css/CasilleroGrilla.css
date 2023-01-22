@@ -1,74 +1,99 @@
 :root {
-    --color-absent: #757575;
-    --color-present: #e4a81d;
-    --color-correct: #43a047;
-    --color-error: #bb3429;
+  --color-absent: #757575;
+  --color-present: #e4a81d;
+  --color-correct: #43a047;
+  --color-error: #bb3429;
 }
 
-.letraIngreso{
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    width: 100%;
-    max-width: 62px;
-    height: 100%;
-    max-height: 62px;
-    border: 2px solid rgb(224, 224, 224);
-    font-size: 1.875rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: transparent;
-    padding:30px;
-    color:black;
-    transition: all 0.2s;
+.letraIngreso {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 100%;
+  max-width: 62px;
+  height: 100%;
+  max-height: 62px;
+  border: 2px solid rgb(224, 224, 224);
+  font-size: 1.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 30px;
+  color: black;
+  transition: all 0.2s;
 }
 
-.letraIngreso:focus{
-    border: 2px solid rgb(144, 202, 249);
-    outline: none;
+.letraIngreso:focus {
+  border: 2px solid rgb(144, 202, 249);
+  outline: none;
 }
 
-.correct{
-    background-color: var(--color-correct);
-    color: white;
-}
-.absent{
-    background-color: var(--color-absent);
-    color: white;
-}
-.present{
-    background-color: var(--color-present);
-    color: white;
-}
+
 
 /*ANIMACION AL ESCRIBIR UNA LETRA*/
 
-.pop{
-    animation: pop 0.25s ease-in-out 1 forwards;
+.pop {
+  animation: pop 0.25s ease-in-out 1 forwards;
 }
 @keyframes pop {
-    0%, 100% {transform: scale(1); }
-    50% { transform: scale(1.15); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
 }
-
 
 /*ANIMACION AL ESCRIBIR FILA*/
+.correct-grilla {
+    animation: spin-correct .35s ease-out 1 forwards;
+  }
+  .absent-grilla {
+    animation: spin-absent .35s ease-out 1 forwards;
+  }
+  .present-grilla {
+    animation: spin-present .35s ease-out 1 forwards;
+  }
 
-.pulsado{
-    animation: spin .25s ease-out 1 forwards;
-}
 /*
+.pulsado {
+  animation: spin .35s ease-out 1 forwards;
+}
+
   .grilla-principal-contenedor button:nth-child(1) { animation-delay: 0s}
   .grilla-principal-contenedor button:nth-child(2) { animation-delay: 0.2s}
   .grilla-principal-contenedor button:nth-child(3) { animation-delay: 0.4s}
   .grilla-principal-contenedor button:nth-child(4) { animation-delay: 0.6s}
   .grilla-principal-contenedor button:nth-child(5) { animation-delay: 0.8s}
 */
-  @keyframes spin {
-    0% {transform: scaleY(0);}
-    100% {transform: scaleY(1);}
+.pulsado:nth-child(5n + 1) { animation-delay: 0s; }
+.pulsado:nth-child(5n + 2) { animation-delay: 0.2s; }
+.pulsado:nth-child(5n + 3) { animation-delay: 0.4s; }
+.pulsado:nth-child(5n + 4) { animation-delay: 0.6s; }
+.pulsado:nth-child(5n + 5) { animation-delay: 0.8s; }
+
+@keyframes spin-present {
+  0% { transform: scaleY(1); }
+  50% { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+  100% { background-color: var(--color-present);color: white;}
+}
+
+@keyframes spin-correct {
+    0% { transform: scaleY(1); }
+    50% { transform: scaleY(0); }
+    100% { transform: scaleY(1); }
+    100% {background-color: var(--color-correct); color: white; }
+  }
+
+@keyframes spin-absent {
+   0% { transform: scaleY(1); }
+    50% { transform: scaleY(0); }
+    100% { transform: scaleY(1);}
+    100% { background-color: var(--color-absent); color: white;}
   }
