@@ -9,10 +9,12 @@ import ComoJugar from './components/ComoJugar';
 import Contacto from "./components/Contacto";
 import Configuracion from './components/Configuracion';
 import ErrorPage from './routes/pagina-error';
+import UseModoVentanaContext from "./hooks/UseModoVentanaContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <UseModoVentanaContext>
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Root />}>
@@ -25,6 +27,7 @@ root.render(
         </Route>
       </Routes>
     </BrowserRouter>
+    </UseModoVentanaContext>
   </React.StrictMode>
 );
 

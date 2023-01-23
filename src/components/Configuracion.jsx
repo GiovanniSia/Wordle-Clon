@@ -1,27 +1,26 @@
 import React from 'react';
-import { useState } from 'react';
+import { useContext } from 'react';
+
+import { modoVentanaContext } from '../context/ModoVentanaContext';
 
 const Configuracion = ({ isOpen, closeModal }) => {
+  const { darkMode, setDarkMode, daltonicMode, setDaltonicMode } = useContext(modoVentanaContext);
 
-  const [modoOscuroclickeado, setModoOscuroclickeado] = useState(false);
-  const [modoDaltonicoclickeado, setModoDaltonicoclickeado] = useState(false);
+  function manejarClickModoOscuro() {
+    setDarkMode(!darkMode)
 
-  function cambiarModoOscuro() {
-    if (modoOscuroclickeado) {
-      setModoOscuroclickeado(!modoOscuroclickeado)
+    if (!darkMode) {
       document.body.setAttribute('tema', "dark")
     } else {
-      setModoOscuroclickeado(!modoOscuroclickeado)
       document.body.setAttribute('tema', "")
     }
   }
 
-  function cambiarModoDaltonismo() {
-    if (modoDaltonicoclickeado) {
-      setModoDaltonicoclickeado(!modoDaltonicoclickeado)
+  function manejarClickModoDaltonico() {
+    setDaltonicMode(!daltonicMode);
+    if (!daltonicMode) {
       document.body.setAttribute('modo', "daltonismo")
     } else {
-      setModoDaltonicoclickeado(!modoDaltonicoclickeado)
       document.body.setAttribute('modo', "")
     }
   }
@@ -43,18 +42,16 @@ const Configuracion = ({ isOpen, closeModal }) => {
           <div className="contenedor-modo-oscuro">
             <p>Modo oscuro</p>
             <label className="switch">
-              <input type="checkbox" className={`${modoOscuroclickeado ? 'clickeado' : ''}`} />
-              <div className={`slider round`} onClick={() => {
-                cambiarModoOscuro()
-              }}></div>
+              <input type="checkbox" className={`${darkMode ? 'clickeado' : ''}`} />
+              <div className={`slider round`} onClick={() => manejarClickModoOscuro()}></div>
             </label>
           </div>
           <hr />
           <div className="contenedor-modo-daltonismo">
             <p>Modo daltonico</p>
             <label className="switch">
-              <input type="checkbox" className={`${modoDaltonicoclickeado ? 'clickeado' : ''}`} onClick="" />
-              <div className={`slider round`} onClick={() => cambiarModoDaltonismo()}></div>
+              <input type="checkbox" className={`${daltonicMode ? 'clickeado' : ''}`} />
+              <div className={`slider round`} onClick={() => manejarClickModoDaltonico()}></div>
             </label>
           </div>
           <hr />
@@ -67,8 +64,3 @@ const Configuracion = ({ isOpen, closeModal }) => {
 
 
 export default Configuracion;
-
-
-
-
-// { `${modoOscuro ? document.body.setAttribute('data-theme', "dark") : document.body.setAttribute('data-theme', "")}` }

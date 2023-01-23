@@ -12,6 +12,7 @@ function App() {
   const [palabraDelDia] = useState(() => generarPalabra(cantLetras));
 
   return (
+    
     <TeclasVirtualesCompContext>
       <div className="App">
         <GrillaPrincipal
@@ -21,6 +22,7 @@ function App() {
         ></GrillaPrincipal>
       </div>
     </TeclasVirtualesCompContext>
+    
   );
 }
 export default App;
