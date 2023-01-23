@@ -1,6 +1,10 @@
 import React from 'react';
+import { useState } from 'react';
 
 const Configuracion = ({ isOpen, closeModal }) => {
+
+  const [modoOscuroclickeado, setModoOscuroclickeado] = useState(false);
+  const [modoDaltonicoclickeado, setModoDaltonicoclickeado] = useState(false);
   return (
     <div>
       <div className={`contenedor`}>
@@ -17,17 +21,17 @@ const Configuracion = ({ isOpen, closeModal }) => {
           </div>
           <div className="contenedor-modo-oscuro">
             <p>Modo oscuro</p>
-            <label class="switch">
-              <input type="checkbox" />
-              <div class="slider round"></div>
+            <label className="switch">
+              <input type="checkbox" className={`${modoOscuroclickeado ? 'clickeado':''}`}/>
+              <div className={`slider round`} onClick={()=>setModoOscuroclickeado(!modoOscuroclickeado)}></div>
             </label>
           </div>
           <hr />
           <div className="contenedor-modo-daltonismo">
             <p>Modo daltonico</p>
-            <label class="switch">
-              <input type="checkbox" />
-              <div class="slider round"></div>
+            <label className="switch">
+            <input type="checkbox" className={`${modoDaltonicoclickeado ? 'clickeado':''}`}/>
+              <div className={`slider round`} onClick={()=>setModoDaltonicoclickeado(!modoDaltonicoclickeado)}></div>
             </label>
           </div>
           <hr />
