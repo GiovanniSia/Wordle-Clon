@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
 import Configuracion from './Configuracion';
 import "../css/BotonConfiguracion.css"
-import { useModal } from '../pruebas/useModal';
+import { useModal } from '../hooks/useModal';
 
 const BotonConfiguracion = (props) => {
   const [isOpenConfig, openModalConfig, closeModalConfig] = useModal(false);
