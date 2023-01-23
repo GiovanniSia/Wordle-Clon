@@ -1,9 +1,9 @@
 import React from 'react';
 import "../css/Header.css"
-import BotonHeader from "./BotonHeader";
 import menu from "../icons/menu.png";
 import configuracion from "../icons/configuracion.png";
 import MenuDesplegable from './MenuDesplegable';
+import BotonConfiguracion from './BotonConfiguracion';
 
 const Header = () => {
   return (
@@ -16,7 +16,7 @@ const Header = () => {
         <p className="del-dia">DEL DÍA</p>
       </div>
       <div>
-        <BotonHeader key={4} tipo={'boton-header__config'} href="configuracion" src={configuracion} />
+        <BotonConfiguracion key={4} tipo={'boton-header__config'} href="configuracion" src={configuracion} />
       </div>
     </header>
   );

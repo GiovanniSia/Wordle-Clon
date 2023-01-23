@@ -1,9 +1,33 @@
-.contenedor-configuracion {
-  display: flex;
-  flex-flow: column nowrap;
-  width: 520px;
+.contenedor {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fff;
   justify-content: center;
-  margin: 30px auto;
+  align-items: center;
+}
+
+.contenedor-configuracion {
+  position: relative;
+  padding: 3rem;
+  max-width: 540px;
+  max-height: 600px;
+  overflow-y: auto;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+.boton-cerrar {
+  position: absolute;
+  top: 0.2rem;
+  right: 1rem;
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  background-color: white;
 }
 
 .contenedor-modo-oscuro {
@@ -80,8 +104,15 @@ input:checked+.slider:before {
   border-radius: 50%;
 }
 
+.configuracion-titulo {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 3px;
+  justify-content: center;
+}
+
 @media all and (max-width:600px) {
   .contenedor-configuracion {
-    width: 85%;
+    width: 90%;
   }
 }

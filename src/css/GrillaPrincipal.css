@@ -18,6 +18,7 @@
   gap: 5px;
   margin: auto;
   flex-grow: 1;
+  padding-top: 20px;
 }
 
 @media only screen and (max-width: 520px) {
