@@ -49,16 +49,18 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
   const actualizarEstadoJuego = () => {
 
     if(palabraEscrita === palabraCorrecta){
-      console.log('se deberia mostrar pantalla final')
       setJuegoTerminado(true);
       //se ponene en false todos los casilleros
       casilleros[filaEnJuego].forEach( casillero => casillero.activo = false);
-      setShowModal(true);
-      setMensajeModal('GANASTE');
-      console.log(showModal);
-      setFilaEnJuego(filaEnJuego + 1);
-      confetti();
-      return;
+      setTimeout(()=>{
+        setShowModal(true);
+        setMensajeModal('GANASTE');
+        console.log(showModal);
+        setFilaEnJuego(filaEnJuego + 1);
+        confetti();
+        return;
+      },1400)
+      
     }
     setFilaEnJuego(filaEnJuego + 1);
     setCasilleroSeleccionado(0);
@@ -118,7 +120,6 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
     }
 
     if (letra === "Enter" && esPalabraValida(palabraEscrita) && palabraEscrita.length === cantLetras) {
-      console.log('palabra escrita: '+palabraEscrita);
       //Se cambian los valores de los casilleros, se cambian los estilos
       setCasilleros(actualizarCasilleros(casilleros, filaEnJuego,palabraCorrecta,palabraEscrita,cantIntentos));
       actualizarEstadoJuego();
