@@ -13,6 +13,7 @@
   align-items: center;
   max-width: 1200px;
   margin: 0px auto 0px auto;
+  background-color: var(--color-fondo);
 }
 
 .fila {
@@ -62,15 +63,17 @@
 }
 
 
-.correct{
+.correct {
   background-color: var(--color-correct);
   color: white;
 }
-.absent{
+
+.absent {
   background-color: var(--color-absent);
   color: white;
 }
-.present{
+
+.present {
   background-color: var(--color-present);
   color: white;
 }

@@ -5,7 +5,7 @@
   left: 0;
   width: 100%;
   min-height: 100vh;
-  background-color: #fff;
+  background-color: var(--color-fondo);
   justify-content: center;
   align-items: center;
 }
@@ -16,7 +16,7 @@
   max-width: 540px;
   max-height: 600px;
   overflow-y: auto;
-  background-color: #fff;
+  background-color: var(--color-fondo);
   margin: 0 auto;
 }
 

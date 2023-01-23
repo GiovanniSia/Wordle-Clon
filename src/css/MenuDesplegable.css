@@ -1,7 +1,7 @@
 .MenuDesplegable {
   width: 16%;
   min-width: 130px;
-  background-color: white;
+  background-color: var(--color-fondo);
   position: absolute;
   top: 50px;
   overflow: visible;
@@ -9,7 +9,7 @@
   display: none;
 }
 
-.MenuDesplegable-show{
+.MenuDesplegable-show {
   display: block;
 }
 
@@ -30,7 +30,7 @@
 
 .boton-item-menu {
   display: block;
-  background-color: white;
+  background-color: var(--color-fondo);
   border: none;
   width: 100%;
   text-align: left;

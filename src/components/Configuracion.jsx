@@ -5,6 +5,17 @@ const Configuracion = ({ isOpen, closeModal }) => {
 
   const [modoOscuroclickeado, setModoOscuroclickeado] = useState(false);
   const [modoDaltonicoclickeado, setModoDaltonicoclickeado] = useState(false);
+
+  function cambiarModoOscuro() {
+    if (modoOscuroclickeado) {
+      setModoOscuroclickeado(!modoOscuroclickeado)
+      document.body.setAttribute('tema', "dark")
+    } else {
+      setModoOscuroclickeado(!modoOscuroclickeado)
+      document.body.setAttribute('tema', "")
+    }
+  }
+
   return (
     <div>
       <div className={`contenedor`}>
@@ -22,16 +33,18 @@ const Configuracion = ({ isOpen, closeModal }) => {
           <div className="contenedor-modo-oscuro">
             <p>Modo oscuro</p>
             <label className="switch">
-              <input type="checkbox" className={`${modoOscuroclickeado ? 'clickeado':''}`}/>
-              <div className={`slider round`} onClick={()=>setModoOscuroclickeado(!modoOscuroclickeado)}></div>
+              <input type="checkbox" className={`${modoOscuroclickeado ? 'clickeado' : ''}`} />
+              <div className={`slider round`} onClick={() => {
+                cambiarModoOscuro()
+              }}></div>
             </label>
           </div>
           <hr />
           <div className="contenedor-modo-daltonismo">
             <p>Modo daltonico</p>
             <label className="switch">
-            <input type="checkbox" className={`${modoDaltonicoclickeado ? 'clickeado':''}`}/>
-              <div className={`slider round`} onClick={()=>setModoDaltonicoclickeado(!modoDaltonicoclickeado)}></div>
+              <input type="checkbox" className={`${modoDaltonicoclickeado ? 'clickeado' : ''}`} onClick="" />
+              <div className={`slider round`} onClick={() => setModoDaltonicoclickeado(!modoDaltonicoclickeado)}></div>
             </label>
           </div>
           <hr />
@@ -40,7 +53,12 @@ const Configuracion = ({ isOpen, closeModal }) => {
     </div >
   );
 
-
 }
 
+
 export default Configuracion;
+
+
+
+
+// { `${modoOscuro ? document.body.setAttribute('data-theme', "dark") : document.body.setAttribute('data-theme', "")}` }
