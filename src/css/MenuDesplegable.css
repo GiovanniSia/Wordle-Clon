@@ -1,12 +1,13 @@
 .MenuDesplegable {
   width: 16%;
   min-width: 130px;
-  background-color: var(--color-fondo);
+  background-color: white;
   position: absolute;
   top: 50px;
   overflow: visible;
   z-index: 1;
   display: none;
+  background-color: var(--color-fondo);
 }
 
 .MenuDesplegable-show {
@@ -22,7 +23,8 @@
 .linea-menu-desplegable {
   border-width: 0px 0px thin;
   border-style: solid;
-  border-color: rgba(0, 0, 0, 0.12);
+  border-color: var(--color-fuente);
+  opacity: 0.20;
   margin-top: 8px;
   margin-bottom: 8px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -38,6 +40,7 @@
   padding: 10%;
   margin: 0px;
   text-decoration: none;
+  color: var(--color-fuente);
 }
 
 .boton-item-menu:hover {

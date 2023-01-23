@@ -1,105 +1,104 @@
-.contenedor-modal{
-    position:fixed;
-    left: 0;
-    top:0;
-    width: 100%;
-    height: 100%;
-    background-color: #111111bd;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .6s;
-    display:none;
+.contenedor-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #111111bd;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s;
+  display: none;
 }
 
-.modal{
-    position: fixed;
+.modal {
+  position: fixed;
 
-    margin:auto;
-    min-width: 25%;
-    width: auto;
-    
-    height: 80%;
-    position: relative;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    word-wrap: break-word;
-    align-items: center;
-    align-content: center;
-    padding: 10px;
-    border-radius: 5px;
+  margin: auto;
+  min-width: 25%;
+  width: auto;
+
+  height: 80%;
+  position: relative;
+  background-color: var(--color-fondo);
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  align-items: center;
+  align-content: center;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-.modal-show{
-    opacity: 1;
-    pointer-events: unset;
-    transition: opacity .6s;
-    display: flex;
+.modal-show {
+  opacity: 1;
+  pointer-events: unset;
+  transition: opacity .6s;
+  display: flex;
 }
 
-.btn-exit-container{
-    position:absolute;
-    right: 0;
-    top:0;
-    margin: 5px 10px auto auto;
+.btn-exit-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 5px 10px auto auto;
 }
 
-.btn-exit{
-    
-    background-color: transparent;
-    border: none;
-    border-radius: 15px;
+.btn-exit {
+
+  background-color: transparent;
+  border: none;
+  border-radius: 15px;
 }
 
-.btn-exit:hover{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px;
-}
-
-
-.modal-items{
-    width: auto;
-    height: 80%;
-    color:black;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    
-    margin:auto;
-
-    justify-content:center;
-    align-items: center;
-}
-
-.item{
-    margin: 15px auto;
-}
-
-.modal-items-mensaje{
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    line-height: 1.167;
-    font-weight: 700;
-    font-size: 1.35rem;
-    text-transform: uppercase;
+.btn-exit:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px;
 }
 
 
-.btn-modal{
- background-color: #43a047;
- width: auto;
- height: auto;
- border: white;
- color: white;
- padding: 15px;
- 
- font-size: 22px;
- font-weight: 700;
- text-transform: uppercase;
- border-radius: 5px;
- cursor: pointer;
+.modal-items {
+  width: auto;
+  height: 80%;
+  color: var(--color-fuente);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
+  margin: auto;
+
+  justify-content: center;
+  align-items: center;
 }
 
-.btn-modal:hover{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px;
+.item {
+  margin: 15px auto;
 }
 
+.modal-items-mensaje {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.167;
+  font-weight: 700;
+  font-size: 1.35rem;
+  text-transform: uppercase;
+}
+
+
+.btn-modal {
+  background-color: #43a047;
+  width: auto;
+  height: auto;
+  border: white;
+  color: white;
+  padding: 15px;
+
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-modal:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px;
+}

@@ -16,6 +16,16 @@ const Configuracion = ({ isOpen, closeModal }) => {
     }
   }
 
+  function cambiarModoDaltonismo() {
+    if (modoDaltonicoclickeado) {
+      setModoDaltonicoclickeado(!modoDaltonicoclickeado)
+      document.body.setAttribute('modo', "daltonismo")
+    } else {
+      setModoDaltonicoclickeado(!modoDaltonicoclickeado)
+      document.body.setAttribute('modo', "")
+    }
+  }
+
   return (
     <div>
       <div className={`contenedor`}>
@@ -44,7 +54,7 @@ const Configuracion = ({ isOpen, closeModal }) => {
             <p>Modo daltonico</p>
             <label className="switch">
               <input type="checkbox" className={`${modoDaltonicoclickeado ? 'clickeado' : ''}`} onClick="" />
-              <div className={`slider round`} onClick={() => setModoDaltonicoclickeado(!modoDaltonicoclickeado)}></div>
+              <div className={`slider round`} onClick={() => cambiarModoDaltonismo()}></div>
             </label>
           </div>
           <hr />

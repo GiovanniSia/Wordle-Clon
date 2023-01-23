@@ -1,11 +1,23 @@
 :root {
   --color-fuente: #000;
   --color-fondo: #fff;
+
+  --color-absent: #757575;
+  --color-present: #e4a81d;
+  --color-correct: #43a047;
+  --color-error: #bb3429;
 }
 
 [tema='dark'] {
   --color-fuente: #fff;
   --color-fondo: #000;
+}
+
+[modo="daltonismo"] {
+  --color-absent: #757575;
+  --color-present: #e4a81d;
+  --color-correct: #81d4fa;
+  --color-error: #bb3429;
 }
 
 body {
@@ -15,6 +27,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-fondo);
 }
 
 code {
