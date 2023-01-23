@@ -1,10 +1,22 @@
 import React from 'react';
-import { useState } from 'react';
+import { useContext } from 'react';
+
+import { modoVentanaContext } from '../context/ModoVentanaContext';
 
 const Configuracion = ({ isOpen, closeModal }) => {
 
-  const [modoOscuroclickeado, setModoOscuroclickeado] = useState(false);
-  const [modoDaltonicoclickeado, setModoDaltonicoclickeado] = useState(false);
+  const {darkMode,setDarkMode,daltonicMode,setDaltonicMode} = useContext(modoVentanaContext);
+
+  function manejarClickModoOscuro(){
+    setDarkMode(!darkMode)
+    //const fondo = document.getElementById('root');
+    //fondo.classList.add('dark-mode');
+  }
+
+  function manejarClickModoDaltonico(){
+    setDaltonicMode(!daltonicMode);
+  }
+
   return (
     <div>
       <div className={`contenedor`}>
@@ -22,16 +34,16 @@ const Configuracion = ({ isOpen, closeModal }) => {
           <div className="contenedor-modo-oscuro">
             <p>Modo oscuro</p>
             <label className="switch">
-              <input type="checkbox" className={`${modoOscuroclickeado ? 'clickeado':''}`}/>
-              <div className={`slider round`} onClick={()=>setModoOscuroclickeado(!modoOscuroclickeado)}></div>
+              <input type="checkbox" className={`${darkMode ? 'clickeado':''}`}/>
+              <div className={`slider round`} onClick={()=>manejarClickModoOscuro()}></div>
             </label>
           </div>
           <hr />
           <div className="contenedor-modo-daltonismo">
             <p>Modo daltonico</p>
             <label className="switch">
-            <input type="checkbox" className={`${modoDaltonicoclickeado ? 'clickeado':''}`}/>
-              <div className={`slider round`} onClick={()=>setModoDaltonicoclickeado(!modoDaltonicoclickeado)}></div>
+            <input type="checkbox" className={`${daltonicMode ? 'clickeado':''}`}/>
+              <div className={`slider round`} onClick={()=>manejarClickModoDaltonico()}></div>
             </label>
           </div>
           <hr />
