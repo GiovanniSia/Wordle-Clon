@@ -22,6 +22,6 @@
 
 @media only screen and (max-width: 520px) {
   .grilla-principal-contenedor {
-    margin: 10% auto 10% auto;
+    margin: auto;
   }
 }
