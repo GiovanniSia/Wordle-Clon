@@ -44,9 +44,15 @@
   filter: brightness(70%)
 }
 
-.tecla:hover,
+.tecla:focus,
 .tecla-larga:focus {
-  opacity: 1;
+  filter: brightness(100%)
+}
+
+/*Para que funcione el active en mobile se debe poner en este orden*/
+.tecla:active,
+.tecla-larga:active{
+  filter: brightness(70%)
 }
 
 .tecla-larga {
