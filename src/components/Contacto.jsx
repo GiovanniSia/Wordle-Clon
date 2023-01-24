@@ -1,4 +1,5 @@
 import React from "react";
+
 import "../css/Contacto.css";
 
 import linkedin from "../icons/linkedin.png";
@@ -7,7 +8,14 @@ import gmail from "../icons/gmail.png";
 
 const Contacto = () => {
 
-  let link = 'https://github.com/leonelSubelza';
+  const emailLeo = 'subelza150@gmail.com'
+  const emailGio = 'giovannisia4@gmail.com'
+
+  const gitLeo = 'https://github.com/leonelSubelza';
+  const gitGio = 'https://github.com/GiovanniSia'
+
+  const linkedinGio = 'https://www.linkedin.com/in/giovanni-sia'
+  const linkedinLeo = 'https://www.linkedin.com/in/leonel-subelza-4b57a1215/';
 
   return (
     <div className="contenedor-contacto">
@@ -30,13 +38,15 @@ const Contacto = () => {
             <h2 className="contacto-nombre">Leonel Subelza</h2>
             <div className="contacto-redes">
               
-              <a className="link" href="https://github.com/leonelSubelza">
+              <a className="link" href={linkedinLeo} onClick={() => window.location = linkedinLeo}>
                 <img src={linkedin} alt="linkedin" />
               </a>
-              <a className="link" href={'https://github.com/leonelSubelza'}>
+
+              <a className="link" href={gitLeo} onClick={() => window.location = gitLeo}>
                 <img src={github} alt="github" />
               </a>
-              <a className="link" href="https://github.com/leonelSubelza">
+      
+              <a className="link" href={emailLeo} onClick={() => window.location = `mailto:${emailLeo}`}>
                 <img src={gmail} alt="gmail" />
               </a>
             </div>
@@ -45,13 +55,13 @@ const Contacto = () => {
           <div className="contacto-item">
             <h2 className="contacto-nombre">Giovanni Sia</h2>
             <div className="contacto-redes">
-              <a className="link" href="https://github.com/leonelSubelza">
+              <a className="link" href={linkedinGio} onClick={() => window.location = linkedinGio}>
                 <img src={linkedin} alt="linkedin" />
               </a>
-              <a className="link" href="www.google.com">
+              <a className="link" href={gitGio} onClick={() => window.location = gitGio}>
                 <img src={github} alt="github" />
               </a>
-              <a className="link" href="www.google.com">
+              <a className="link" href={emailGio} onClick={() => window.location = `mailto:${emailGio}`}>
                 <img src={gmail} alt="gmail" />
               </a>
             </div>
