@@ -7,12 +7,12 @@ import { ManejarMenuDeplegable } from '../hooks/manejarMenuDeplegable.js'
 const MenuDesplegable = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  function manejarMenu(event){
+  function manejarMenu(event) {
     event.preventDefault();
     let botonHeader = document.querySelector('.boton-header__menu');
-    if(event.target === botonHeader){
+    if (event.target === botonHeader) {
       setIsOpen(!isOpen);
-    }else{
+    } else {
       setIsOpen(false);
 
     }
@@ -26,12 +26,12 @@ const MenuDesplegable = (props) => {
       <div className={`MenuDesplegable ${isOpen ? 'MenuDesplegable-show' : ''}`}>
         <div className='lista'>
           <nav>
-            <ItemMenu href="normal" msg="Normal" />
+            <ItemMenu href="/Wordle-Clon/normal" msg="Normal" />
             <hr className='linea-menu-desplegable' />
-            <ItemMenu href="como-jugar" msg="Cómo jugar" />
-            <ItemMenu href="contacto" msg="Contacto" />
-            </nav>
-        </div>  
+            <ItemMenu href="/Wordle-Clon/como-jugar" msg="Cómo jugar" />
+            <ItemMenu href="/Wordle-Clon/contacto" msg="Contacto" />
+          </nav>
+        </div>
       </div>
     </>
   )
