@@ -12,8 +12,8 @@ const Header = () => {
         <MenuDesplegable img={menu} />
       </div>
       <div>
-        <p className="la-palabra">LA PALABRA</p>
-        <p className="del-dia">DEL DÍA</p>
+        <p className="la-palabra">ADIVINA</p>
+        <p className="del-dia">LA PALABRA</p>
       </div>
       <div>
         <BotonConfiguracion key={4} tipo={'boton-header__config'} href="configuracion" src={configuracion} />
