@@ -27,7 +27,7 @@
 
 .contacto-devs-titulo{
   margin: auto;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .contacto-contenedor-items{
@@ -48,7 +48,7 @@
 
 .contacto-redes{
   display: flex;
-  width: 50%;
+  width: 156px;
   height: 100%;
   margin: auto;
   align-items: center;
@@ -73,6 +73,7 @@
 
   .contacto{
     height: 30%;
+    width: 100%;
   }
 
   .contacto-contenedor-items{
@@ -81,6 +82,10 @@
   }
 
   .contacto-item{
+    margin:10px auto;
     width: 100%;
   }
+  .contacto-redes{
+  }
+
 }
