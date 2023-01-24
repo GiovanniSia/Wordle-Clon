@@ -2,8 +2,8 @@ import { useContext, useState } from "react";
 import "../css/GrillaPrincipal.css";
 import CasilleroGrilla from "./CasilleroGrilla";
 import { useWindow } from "../hooks/useWindow";
-import {esPalabraValida,generarPalabra} from '../service/GeneradorDePalabra';
-import { generarGrilla,actualizarCasilleros } from "./Grilla";
+import { esPalabraValida, generarPalabra } from '../service/GeneradorDePalabra';
+import { generarGrilla, actualizarCasilleros } from "./Grilla";
 
 import { teclasVirtualesContext } from '../context/TeclasVirtualesContext';
 
@@ -11,7 +11,7 @@ import TecladoVirtual from './TecladoVirtual';
 import MensajeEmergente from "./MensajeEmergente";
 import VentanaFinal from "./VentanaFinal";
 
-import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+import confetti from 'canvas-confetti';
 
 const letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'ñ', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
@@ -25,17 +25,17 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
   const [casilleroSeleccionado, setCasilleroSeleccionado] = useState(0);
   const [juegoTerminado, setJuegoTerminado] = useState(false);
   const [palabraEscrita, setPalabraEscrita] = useState("");
-  const [palabraCorrecta,setPalabraCorrecta] = useState(pCorrecta);
-  
-//MENSAJE EMERGENTE
-  const [msjEmergente, setMsjEmergente] = useState({mensaje:'',mostrarMsj:false});
+  const [palabraCorrecta, setPalabraCorrecta] = useState(pCorrecta);
+
+  //MENSAJE EMERGENTE
+  const [msjEmergente, setMsjEmergente] = useState({ mensaje: '', mostrarMsj: false });
 
   //MENSAJE FINAL
-  const [showModal,setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [mensajeModal, setMensajeModal] = useState('');
 
-  const [casilleros,setCasilleros] = useState(() => generarGrilla(cantIntentos,cantLetras));
-  
+  const [casilleros, setCasilleros] = useState(() => generarGrilla(cantIntentos, cantLetras));
+
   const escribirCasillero = (letra) => {
     casilleros[filaEnJuego][casilleroSeleccionado].valor = letra;
     setPalabraEscrita(palabraEscrita + letra);
@@ -48,27 +48,27 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
 
   const actualizarEstadoJuego = () => {
 
-    if(palabraEscrita === palabraCorrecta){
+    if (palabraEscrita === palabraCorrecta) {
       setJuegoTerminado(true);
       //se ponene en false todos los casilleros
-      casilleros[filaEnJuego].forEach( casillero => casillero.activo = false);
-      setTimeout(()=>{
+      casilleros[filaEnJuego].forEach(casillero => casillero.activo = false);
+      setTimeout(() => {
         setShowModal(true);
         setMensajeModal('GANASTE');
         setFilaEnJuego(filaEnJuego + 1);
         confetti();
         return;
-      },1400)
-      
+      }, 1400)
+
     }
     setFilaEnJuego(filaEnJuego + 1);
     setCasilleroSeleccionado(0);
 
     //se actualiza fila siguiente
-    if(filaEnJuego+1<cantIntentos){
-      casilleros[filaEnJuego+1].forEach( casillero => casillero.activo = true);
-    }else{
-      mostrarMensajeEmergente('¡PERDISTE!',1500);
+    if (filaEnJuego + 1 < cantIntentos) {
+      casilleros[filaEnJuego + 1].forEach(casillero => casillero.activo = true);
+    } else {
+      mostrarMensajeEmergente('¡PERDISTE!', 1500);
       setShowModal(true);
       setMensajeModal('PERDISTE');
     }
@@ -107,8 +107,8 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
       return;
     }
 
-    if(letra === "Enter" && palabraEscrita.length < cantLetras){
-      mostrarMensajeEmergente('No hay suficientes letras',1500);
+    if (letra === "Enter" && palabraEscrita.length < cantLetras) {
+      mostrarMensajeEmergente('No hay suficientes letras', 1500);
       return
     }
     if (letra === "Enter" && !esPalabraValida(palabraEscrita)) {
@@ -118,7 +118,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
 
     if (letra === "Enter" && esPalabraValida(palabraEscrita) && palabraEscrita.length === cantLetras) {
       //Se cambian los valores de los casilleros, se cambian los estilos
-      setCasilleros(actualizarCasilleros(casilleros, filaEnJuego,palabraCorrecta,palabraEscrita,cantIntentos));
+      setCasilleros(actualizarCasilleros(casilleros, filaEnJuego, palabraCorrecta, palabraEscrita, cantIntentos));
       actualizarEstadoJuego();
       setPalabraEscrita('');
       return;
@@ -130,16 +130,16 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
   };
 
   const volverAJugar = () => {
-    setTimeout(()=>{setPalabraCorrecta(generarPalabra(cantLetras))},1000);
-      reiniciarTeclasVirtuales();
-      //REINICIAR: PALABRACORRECTA, CASILLEROS, TECLADO
-      
-      setCasilleros ( generarGrilla(cantIntentos,cantLetras) );
-      setFilaEnJuego(0);
-      setCasilleroSeleccionado(0);
-      setJuegoTerminado(false);
-      setPalabraEscrita('');
-      setShowModal(false);
+    setTimeout(() => { setPalabraCorrecta(generarPalabra(cantLetras)) }, 1000);
+    reiniciarTeclasVirtuales();
+    //REINICIAR: PALABRACORRECTA, CASILLEROS, TECLADO
+
+    setCasilleros(generarGrilla(cantIntentos, cantLetras));
+    setFilaEnJuego(0);
+    setCasilleroSeleccionado(0);
+    setJuegoTerminado(false);
+    setPalabraEscrita('');
+    setShowModal(false);
   }
 
   useWindow("keyup", procesarTecla);
@@ -162,15 +162,15 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
           });
         })}
       </div>
-      <TecladoVirtual onKeyPressed={procesarTecla} casillerosGrillaJugada={casilleros[ (filaEnJuego===0 ? 0 : filaEnJuego-1)]}></TecladoVirtual>
-      <MensajeEmergente 
-        mensaje = {msjEmergente.mensaje}
-        mostrarMsj = {msjEmergente.mostrarMsj}
-        />
-        <VentanaFinal mensaje={mensajeModal} mostrarModal={showModal} palabraCorrecta={palabraCorrecta} volverAJugar={volverAJugar}/>
+      <TecladoVirtual onKeyPressed={procesarTecla} casillerosGrillaJugada={casilleros[(filaEnJuego === 0 ? 0 : filaEnJuego - 1)]}></TecladoVirtual>
+      <MensajeEmergente
+        mensaje={msjEmergente.mensaje}
+        mostrarMsj={msjEmergente.mostrarMsj}
+      />
+      <VentanaFinal mensaje={mensajeModal} mostrarModal={showModal} palabraCorrecta={palabraCorrecta} volverAJugar={volverAJugar} />
 
     </div>
-    
+
 
   );
 };

@@ -19,6 +19,7 @@ root.render(
         <Routes>
           <Route path="/" element={<Root />}>
             <Route path="/" element={<App />} />
+            <Route path="/Wordle-Clon" element={<App />} />
             <Route path="/Normal" element={<App />} />
             <Route path="/como-jugar" element={<ComoJugar />} />
             <Route path="/contacto" element={<Contacto />} />
