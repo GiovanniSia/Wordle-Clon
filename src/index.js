@@ -20,10 +20,10 @@ root.render(
           <Route path="/" element={<Root />}>
             <Route path="/" element={<App />} />
             <Route path="/Wordle-Clon" element={<App />} />
-            <Route path="/Normal" element={<App />} />
-            <Route path="/como-jugar" element={<ComoJugar />} />
-            <Route path="/contacto" element={<Contacto />} />
-            <Route path="/configuracion" element={<Configuracion />} />
+            <Route path="/Wordle-Clon/Normal" element={<App />} />
+            <Route path="/Wordle-Clon/como-jugar" element={<ComoJugar />} />
+            <Route path="/Wordle-Clon/contacto" element={<Contacto />} />
+            <Route path="/Wordle-Clon/configuracion" element={<Configuracion />} />
             <Route path="*" element={<ErrorPage />} />
           </Route>
         </Routes>
