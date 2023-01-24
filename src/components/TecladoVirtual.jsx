@@ -1,34 +1,34 @@
 import React, { useContext } from "react";
 import "../css/TecladoVirtual.css";
 import { estadosCasillero } from "./Grilla";
-import {teclasVirtualesContext} from '../context/TeclasVirtualesContext'
+import { teclasVirtualesContext } from '../context/TeclasVirtualesContext'
 
 const TecladoVirtual = ({ onKeyPressed, casillerosGrillaJugada }) => {
-  
+
   const { tecladoVirtual } = useContext(teclasVirtualesContext);
   function establecerEstadoBoton(tecla) {
-   if(tecla.estado === estadosCasillero.CORRECT){
-    return estadosCasillero.CORRECT;
-   }
-
-   let estado=tecla.estado;
-   for( let i=0; i<casillerosGrillaJugada.length; i++){
-    if(casillerosGrillaJugada[i].valor === tecla.letra){
-      if(casillerosGrillaJugada[i].estado === estadosCasillero.CORRECT){
-        tecla.estado=estadosCasillero.CORRECT;
-        return estadosCasillero.CORRECT;
-      }
-      if(casillerosGrillaJugada[i].estado === estadosCasillero.PRESENT && estado !== estadosCasillero.PRESENT){
-        tecla.estado=estadosCasillero.PRESENT;
-        estado=estadosCasillero.PRESENT;
-      }
-      if(casillerosGrillaJugada[i].estado === estadosCasillero.ABSENT && tecla.estado === estadosCasillero.DEFAULT){
-        tecla.estado=estadosCasillero.ABSENT;
-        estado=estadosCasillero.ABSENT;
-      }
+    if (tecla.estado === estadosCasillero.CORRECT) {
+      return estadosCasillero.CORRECT;
     }
 
-   }
+    let estado = tecla.estado;
+    for (let i = 0; i < casillerosGrillaJugada.length; i++) {
+      if (casillerosGrillaJugada[i].valor === tecla.letra) {
+        if (casillerosGrillaJugada[i].estado === estadosCasillero.CORRECT) {
+          tecla.estado = estadosCasillero.CORRECT;
+          return estadosCasillero.CORRECT;
+        }
+        if (casillerosGrillaJugada[i].estado === estadosCasillero.PRESENT && estado !== estadosCasillero.PRESENT) {
+          tecla.estado = estadosCasillero.PRESENT;
+          estado = estadosCasillero.PRESENT;
+        }
+        if (casillerosGrillaJugada[i].estado === estadosCasillero.ABSENT && tecla.estado === estadosCasillero.DEFAULT) {
+          tecla.estado = estadosCasillero.ABSENT;
+          estado = estadosCasillero.ABSENT;
+        }
+      }
+
+    }
     return estado;
   }
 

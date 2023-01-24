@@ -4,12 +4,8 @@ import "../css/Contacto.css";
 
 import linkedin from "../icons/linkedin.png";
 import github from "../icons/github.png";
-import gmail from "../icons/gmail.png";
 
 const Contacto = () => {
-
-  const emailLeo = 'subelza150@gmail.com'
-  const emailGio = 'giovannisia4@gmail.com'
 
   const gitLeo = 'https://github.com/leonelSubelza';
   const gitGio = 'https://github.com/GiovanniSia'
@@ -37,7 +33,7 @@ const Contacto = () => {
           <div className="contacto-item">
             <h2 className="contacto-nombre">Leonel Subelza</h2>
             <div className="contacto-redes">
-              
+
               <a className="link" href={linkedinLeo} onClick={() => window.location = linkedinLeo}>
                 <img src={linkedin} alt="linkedin" />
               </a>
@@ -45,10 +41,7 @@ const Contacto = () => {
               <a className="link" href={gitLeo} onClick={() => window.location = gitLeo}>
                 <img src={github} alt="github" />
               </a>
-      
-              <a className="link" href={emailLeo} onClick={() => window.location = `mailto:${emailLeo}`}>
-                <img src={gmail} alt="gmail" />
-              </a>
+
             </div>
           </div>
 
@@ -61,9 +54,7 @@ const Contacto = () => {
               <a className="link" href={gitGio} onClick={() => window.location = gitGio}>
                 <img src={github} alt="github" />
               </a>
-              <a className="link" href={emailGio} onClick={() => window.location = `mailto:${emailGio}`}>
-                <img src={gmail} alt="gmail" />
-              </a>
+
             </div>
           </div>
         </div>
