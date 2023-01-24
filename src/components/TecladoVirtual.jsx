@@ -45,11 +45,7 @@ const TecladoVirtual = ({ onKeyPressed, casillerosGrillaJugada }) => {
       return (
         <div>
           <p className="Enviar1">ENVIAR</p>
-          <img
-            className="Enviar2"
-            src="https://img.icons8.com/material-outlined/24/null/checkmark--v2.png"
-            alt=""
-          />
+          ✓
         </div>
       );
     } else {
