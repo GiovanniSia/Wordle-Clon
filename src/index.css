@@ -13,6 +13,8 @@
 [tema='dark'] {
   --color-fuente: #fff;
   --color-fondo: #000;
+  --color-teclado: #475569;
+
 }
 
 [modo="daltonismo"] {

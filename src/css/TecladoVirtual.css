@@ -34,13 +34,14 @@
   border: none;
   border-radius: 5px;
   background-color: var(--color-teclado);
-  color: #000;
+  color: var(--color-fuente);
   cursor: pointer;
+  outline: none;
 }
 
 .tecla:hover,
 .tecla-larga:hover {
-  opacity: .5;
+  filter: brightness(70%)
 }
 
 .tecla:hover,

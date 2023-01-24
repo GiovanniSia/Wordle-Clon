@@ -39,10 +39,7 @@ const TecladoVirtual = ({ onKeyPressed, casillerosGrillaJugada }) => {
   function tipoLetraFila3(letra) {
     if (letra === "Backspace") {
       return (
-        <img
-          src="https://img.icons8.com/ios-glyphs/30/null/clear-symbol.png"
-          alt=""
-        />
+        `⌫`
       );
     } else if (letra === "Enter") {
       return (
