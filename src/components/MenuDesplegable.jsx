@@ -9,18 +9,12 @@ const MenuDesplegable = (props) => {
 
   function manejarMenu(event){
     event.preventDefault();
-    //let contenedorItems = document.querySelectorAll('.boton-item-menu');
     let botonHeader = document.querySelector('.boton-header__menu');
-    //let childrens = Array.from(contenedorItems)
     if(event.target === botonHeader){
       setIsOpen(!isOpen);
     }else{
       setIsOpen(false);
-      /*
-      if(!childrens.includes(event.target)){
-        setIsOpen(false)
-      }
-      */
+
     }
   }
 

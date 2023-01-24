@@ -6,25 +6,12 @@ import {teclasVirtualesContext} from '../context/TeclasVirtualesContext'
 const TecladoVirtual = ({ onKeyPressed, casillerosGrillaJugada }) => {
   
   const { tecladoVirtual } = useContext(teclasVirtualesContext);
-
-
-  /*
-  function generarTeclasVirtuales(){
-    let ret = [[]]
-    letrasFila1.forEach( letra => ret[0].push({letra:letra, estado: estadosCasillero.DEFAULT}));
-    letrasFila2.forEach( letra => ret[1].push({letra:letra, estado: estadosCasillero.DEFAULT}));
-    letrasFila3.forEach( letra => ret[2].push({letra:letra, estado: estadosCasillero.DEFAULT}));
-    return ret;
-  }
-  */
-
   function establecerEstadoBoton(tecla) {
    if(tecla.estado === estadosCasillero.CORRECT){
     return estadosCasillero.CORRECT;
    }
 
    let estado=tecla.estado;
-   //console.log('letra: '+tecla.letra+', estado: '+tecla.estado)
    for( let i=0; i<casillerosGrillaJugada.length; i++){
     if(casillerosGrillaJugada[i].valor === tecla.letra){
       if(casillerosGrillaJugada[i].estado === estadosCasillero.CORRECT){
@@ -42,7 +29,6 @@ const TecladoVirtual = ({ onKeyPressed, casillerosGrillaJugada }) => {
     }
 
    }
-   //devolvería estado=default
     return estado;
   }
 
@@ -78,7 +64,6 @@ const TecladoVirtual = ({ onKeyPressed, casillerosGrillaJugada }) => {
     <div className="tecladoVirtual">
       <div className="fila">
         {tecladoVirtual[0].map((tecla, index) => (
-          //() => props.manejarClic( props.children )
           <button
             className={`tecla ${establecerEstadoBoton(tecla)} `}
             onClick={() => presionarTecla(tecla.letra)}

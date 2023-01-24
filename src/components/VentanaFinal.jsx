@@ -7,17 +7,14 @@ export default function VentanaFinal({ mensaje, mostrarModal,palabraCorrecta,vol
   }
 
   function reiniciar(){
-    console.log('se hizo click en reiniciar')
     cerrarVentanaModal();
     return volverAJugar()
   }
 
 
-  //<div className={`contenedor-modal ${mostrarModal ? "modal-show" : ""}`}>
   return (
     <div className={`contenedor-modal ${mostrarModal ? "modal-show" : ""}`}  id='contenedor-modal'>
       <div className="modal">
-      {/*<div className="btn-exit-container"><button className="btn-exit" onClick={() => cerrarVentanaModal()}>&#10006;</button></div>*/}
         <div className="modal-items">
           <p className="modal-items-mensaje item">{`${mensaje}!`}</p>
           <p className="item">{`La palabra corracta era: ${palabraCorrecta}`}</p>

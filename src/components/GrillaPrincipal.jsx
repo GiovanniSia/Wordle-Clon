@@ -55,7 +55,6 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
       setTimeout(()=>{
         setShowModal(true);
         setMensajeModal('GANASTE');
-        console.log(showModal);
         setFilaEnJuego(filaEnJuego + 1);
         confetti();
         return;
@@ -84,7 +83,6 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
 
   const borrarLetraActual = () => {
     if (palabraEscrita === "") {
-      console.log("nada que borrar");
       return;
     }
     setPalabraEscrita(palabraEscrita.substring(0, palabraEscrita.length - 1));
@@ -93,7 +91,6 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
   };
 
   const procesarTecla = (event) => {
-    console.log('palabra correcta: '+palabraCorrecta)
     let letra = event;
     if (typeof event !== 'string') {
       letra = event.key;
@@ -133,7 +130,6 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
   };
 
   const volverAJugar = () => {
-    console.log('se reinicia')
     setTimeout(()=>{setPalabraCorrecta(generarPalabra(cantLetras))},1000);
       reiniciarTeclasVirtuales();
       //REINICIAR: PALABRACORRECTA, CASILLEROS, TECLADO
@@ -179,12 +175,3 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
   );
 };
 export default GrillaPrincipal;
-
-/*
-API url=https://blog.greenborn.com.ar/2022/03/04/actualizacion-en-api-de-palabras-al-azar/
-fetch('https://clientes.api.greenborn.com.ar/public-random-word?c=1&l=5')
-  .then(response => response.json())
-	.then(valor => console.log(valor))
-	.catch(error => console.log(error))
-
-*/
