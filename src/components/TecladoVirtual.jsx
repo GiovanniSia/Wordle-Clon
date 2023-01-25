@@ -45,7 +45,7 @@ const TecladoVirtual = ({ onKeyPressed, casillerosGrillaJugada }) => {
       return (
         <div>
           <p className="Enviar1">ENVIAR</p>
-          ✓
+          <p className="Enviar2">✓</p>
         </div>
       );
     } else {
