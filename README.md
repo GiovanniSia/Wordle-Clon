@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# Proyecto Wordle-Clon
+:star: Proyecto realizado por [Leonel Subelza](https://github.com/leonelSubelza) y [Giovanni Sia](https://github.com/GiovanniSia)
+--
+El juego consiste en adivinar una palabra aleatoria de cinco letras. Se tendrán cinco intentos para sugerir una palabra, donde las letras de la palabra sugerida cambiarán de color indicando si su posición es correcta o no con respecto a la palabra correcta.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+`La letra se vuelve`:
+- Verde si es correcta y está en la posición correcta.
+- Amarilla si es correcta pero no está en la posición correcta.
+- Gris si no pertenece a la palabra.
 
-## Available Scripts
+El juego posee una ventana con información sobre cómo jugar, otra con el contacto de los desarrolladores. Además cuenta con la opción de poner el modo oscuro y/o el modo daltónico.
+Además, el sistema posee un diseño responsivo el cual es adaptable a distintos tipos de tamaños de ventana.
 
-In the project directory, you can run:
+## :hammer:Teconologías utilizadas:  
+- JavaScript
+- HTML5
+- CSS3
+- REACT.js
+---
 
+## :link: Enlace del [proyecto](https://giovannisia.github.io/Wordle-Clon/)
+
+## :video_game: Imágenes del sistema 
+
+- `Modo normal`
+![normal](https://user-images.githubusercontent.com/85598026/214917531-cf5158c9-350f-4136-bce4-37aec83a9c2e.jpg)
+
+- `Modo oscuro`
+![oscuro](https://user-images.githubusercontent.com/85598026/214917632-c2893064-db25-45b5-84a1-190644f8ad48.jpg)
+
+- `Pantalla Final`
+![victoria](https://user-images.githubusercontent.com/85598026/214918210-e4691020-8f55-447e-8f14-50fe1a2271d8.jpg)
+
+## Cómo correr el proyecto
+### `npm install`
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
