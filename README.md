@@ -1,7 +1,7 @@
 # Proyecto Wordle-Clon
 :star: Proyecto realizado por [Leonel Subelza](https://github.com/leonelSubelza) y [Giovanni Sia](https://github.com/GiovanniSia)
 --
-El juego consiste en adivinar una palabra aleatoria de cinco letras. Se tendrán cinco intentos para sugerir una palabra, donde las letras de la palabra sugerida cambiarán de color indicando si su posición es correcta o no con respecto a la palabra correcta.
+El juego consiste en adivinar una palabra aleatoria de cinco letras. Se tendrán seis intentos para sugerir una palabra, donde las letras de la palabra sugerida cambiarán de color indicando si su posición es correcta o no con respecto a la palabra correcta.
 
 `La letra se vuelve`:
 - Verde si es correcta y está en la posición correcta.
