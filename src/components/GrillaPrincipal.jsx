@@ -92,6 +92,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
 
   const procesarTecla = (event) => {
     let letra = event;
+    console.log('palabraOculta: '+palabraCorrecta)
     if (typeof event !== 'string') {
       letra = event.key;
     }
