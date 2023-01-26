@@ -56,11 +56,10 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
   }
 
   const actualizarEstadoJuego = () => {
-    console.log('palabraOculta: '+palabraCorrecta)
     if (palabraEscrita === palabraCorrecta) {
       //se ponene en false todos los casilleros
       casilleros[filaEnJuego].forEach(casillero => casillero.activo = false);
-      setTimeout(() => {mostrarMensajeEmergente('¡ACERTARSTE!', 1400);},1000)
+      setTimeout(() => {mostrarMensajeEmergente('¡ACERTASTE!', 1400);},1000)
       mostrarPantallaFinal('GANASTE',2900); 
       return;
     }
