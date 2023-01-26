@@ -1,4 +1,4 @@
-export const wordsFinal = [
+export const words = [
   "AARON",
   "ABABA",
   "ABACA",

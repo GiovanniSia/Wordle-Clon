@@ -17,7 +17,7 @@ export default function VentanaFinal({ mensaje, mostrarModal,palabraCorrecta,vol
       <div className="modal">
         <div className="modal-items">
           <p className="modal-items-mensaje item">{`${mensaje}!`}</p>
-          <p className="item">{`La palabra corracta era: ${palabraCorrecta}`}</p>
+          <p className="item">{`La palabra correcta era: ${palabraCorrecta}`}</p>
           <button className="btn-modal item" onClick={(reiniciar)}>JUGAR DE NUEVO &#10227;</button>
         </div>
       </div>

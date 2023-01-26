@@ -8,12 +8,17 @@
   --color-present: #e4a81d;
   --color-correct: #43a047;
   --color-error: #bb3429;
+  --color-fondo-ventana-emergente: #000;
+  --color-fuente-ventana-emergente: #fff;
 }
 
 [tema='dark'] {
   --color-fuente: #fff;
   --color-fondo: #000;
   --color-teclado: #475569;
+
+  --color-fondo-ventana-emergente: #fff;
+  --color-fuente-ventana-emergente: #000;
 
 }
 

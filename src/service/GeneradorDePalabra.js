@@ -1,21 +1,19 @@
-import {wordsFinal} from './WordsFinal.js'
+//Todas las palabras son de 5 letras, en mayúscula y sin tildes
+import {words} from './Words.js'
 
-const listaPalabrasUtilizar = wordsFinal;
+const letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'Ñ', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-export function generarPalabra(cantLetras) {
-  let palabra = "";
-  while (palabra.length !== cantLetras) {
-    palabra = listaPalabrasUtilizar[Math.floor(Math.random() * listaPalabrasUtilizar.length)];
-  }
+export function generarPalabra() {
+  let palabraAleatoria = words[Math.floor(Math.random() * words.length)];
   //se quitan las tildes y se pone en mayuscula
-  return palabra.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+  return palabraAleatoria.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
 }
 
 export function esPalabraValida(palabra) {
-  
-  for (let i = 0; i < listaPalabrasUtilizar.length; i++) {
-    if (listaPalabrasUtilizar[i].normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase() === palabra) {
-      return true;
-    }
-  }
+  palabra = palabra.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+  return words.includes(palabra);
 }
+
+export function esLetraValida(letra) {
+  return letras.includes(letra.toUpperCase());
+};

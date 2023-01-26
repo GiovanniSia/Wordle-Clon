@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import "../css/GrillaPrincipal.css";
 import CasilleroGrilla from "./CasilleroGrilla";
 import { useWindow } from "../hooks/useWindow";
-import { esPalabraValida, generarPalabra } from '../service/GeneradorDePalabra';
+import { esPalabraValida, generarPalabra ,esLetraValida} from '../service/GeneradorDePalabra';
 import { generarGrilla, actualizarCasilleros } from "./Grilla";
 
 import { teclasVirtualesContext } from '../context/TeclasVirtualesContext';
@@ -12,9 +12,6 @@ import MensajeEmergente from "./MensajeEmergente";
 import VentanaFinal from "./VentanaFinal";
 
 import confetti from 'canvas-confetti';
-
-const letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'ñ', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-
 const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
 
   //RELOAD
@@ -42,36 +39,13 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
     setCasilleroSeleccionado((casilleroSeleccionado + 1));
   };
 
-  const esLetraValida = (letra) => {
-    return letras.includes(letra.toLowerCase());
-  };
-
-  const actualizarEstadoJuego = () => {
-
-    if (palabraEscrita === palabraCorrecta) {
-      setJuegoTerminado(true);
-      //se ponene en false todos los casilleros
-      casilleros[filaEnJuego].forEach(casillero => casillero.activo = false);
-      setTimeout(() => {
-        setShowModal(true);
-        setMensajeModal('GANASTE');
-        setFilaEnJuego(filaEnJuego + 1);
-        confetti();
-        return;
-      }, 1400)
-
-    }
-    setFilaEnJuego(filaEnJuego + 1);
-    setCasilleroSeleccionado(0);
-
-    //se actualiza fila siguiente
-    if (filaEnJuego + 1 < cantIntentos) {
-      casilleros[filaEnJuego + 1].forEach(casillero => casillero.activo = true);
-    } else {
-      mostrarMensajeEmergente('¡PERDISTE!', 1500);
+  const mostrarPantallaFinal = (mensajeFinal,tiempo) => {
+    setJuegoTerminado(true);
+    setMensajeModal(mensajeFinal);
+    setTimeout(() => {
       setShowModal(true);
-      setMensajeModal('PERDISTE');
-    }
+      if(mensajeFinal === 'GANASTE') confetti();
+    },tiempo);
   }
 
   const mostrarMensajeEmergente = (mensaje, tiempo) => {
@@ -79,6 +53,26 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
     setTimeout(() => {
       setMsjEmergente({ mensaje: mensaje, mostrarMsj: false });
     }, tiempo);
+  }
+
+  const actualizarEstadoJuego = () => {
+    if (palabraEscrita === palabraCorrecta) {
+      //se ponene en false todos los casilleros
+      casilleros[filaEnJuego].forEach(casillero => casillero.activo = false);
+      setTimeout(() => {mostrarMensajeEmergente('¡ACERTASTE!', 1400);},1000)
+      mostrarPantallaFinal('GANASTE',2900); 
+      return;
+    }
+    setFilaEnJuego(filaEnJuego + 1);
+    setCasilleroSeleccionado(0);
+
+    //Si no se adivino la palabra, y la sig fila existe sigue el juego
+    if (filaEnJuego + 1 < cantIntentos) {
+      casilleros[filaEnJuego + 1].forEach(casillero => casillero.activo = true);
+    } else {      
+      setTimeout(() => {mostrarMensajeEmergente('¡FALLASTE!',1400);},1000)
+      mostrarPantallaFinal('PERDISTE',2900);      
+    }
   }
 
   const borrarLetraActual = () => {
@@ -130,10 +124,9 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
   };
 
   const volverAJugar = () => {
+    //Para que no se muestre la palabraCorrecta en la pantalla final
     setTimeout(() => { setPalabraCorrecta(generarPalabra(cantLetras)) }, 1000);
     reiniciarTeclasVirtuales();
-    //REINICIAR: PALABRACORRECTA, CASILLEROS, TECLADO
-
     setCasilleros(generarGrilla(cantIntentos, cantLetras));
     setFilaEnJuego(0);
     setCasilleroSeleccionado(0);
@@ -168,10 +161,7 @@ const GrillaPrincipal = ({ pCorrecta, cantLetras, cantIntentos }) => {
         mostrarMsj={msjEmergente.mostrarMsj}
       />
       <VentanaFinal mensaje={mensajeModal} mostrarModal={showModal} palabraCorrecta={palabraCorrecta} volverAJugar={volverAJugar} />
-
     </div>
-
-
   );
 };
 export default GrillaPrincipal;

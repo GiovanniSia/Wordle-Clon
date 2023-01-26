@@ -60,12 +60,17 @@
   height: 60px;
 }
 
+.Enviar-contenedor{
+  display: flex;
+}
+
 .Enviar1 {
   display: flex;
 }
 
 .Enviar2 {
   display: none;
+  margin: auto;
 }
 
 
