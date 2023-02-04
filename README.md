@@ -11,12 +11,36 @@ El juego consiste en adivinar una palabra aleatoria de cinco letras. Se tendrán
 El juego posee una ventana con información sobre cómo jugar, otra con el contacto de los desarrolladores. Además cuenta con la opción de poner el modo oscuro y/o el modo daltónico.
 Además, el sistema posee un diseño responsivo el cual es adaptable a distintos tipos de tamaños de ventana.
 
-## :hammer:Teconologías utilizadas:  
-- JavaScript
-- HTML5
-- CSS3
-- REACT.js
----
+## :hammer:Teconologías utilizadas:
+<table align="center">
+    <tr>
+    <td align="center" width="100">
+      <a href="#">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg" width="50" height="50" alt="JavaScript" />
+      </a>
+      <br>JavaScript
+    </td>    
+      <td align="center" width="100">
+      <a href="#">
+        <img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" width="50" height="50" alt="JavaScript" />
+      </a>
+      <br>React
+    </td>     
+    <td align="center" width="100">
+      <a href="#">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" width="50" height="50" alt="HTML5" />
+      </a>
+      <br>HTML5
+    </td>
+    </td> 
+    <td align="center" width="100">
+      <a href="#">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" width="50" height="50" alt="CSS3" />
+      </a>
+      <br>CSS3
+    </td>
+  </tr>
+</table>
 
 ## :link: Enlace del [proyecto](https://giovannisia.github.io/Wordle-Clon/)
 
